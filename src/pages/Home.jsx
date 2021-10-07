@@ -1,11 +1,13 @@
-import Header from '../components/Header'
+import Navbar from '../components/Navbar'
 import '../index.css'
 
 function Home() {
     return (
-        <main>
-            <Header />
-        </main>
+        <>
+            <Navbar />
+            <nav className="w-20 h-full bg-black"></nav>
+            <main className="h-screen"></main>
+        </>
     )
 }
 
