@@ -88,15 +88,11 @@ function UserInterface(props) {
                         </h2>
                     </div>
                     <div className="grid grid-cols-4 gap-3 h-5/6">
-                        <div className="bg-gray-100 rounded-md col-span-3">
-                            {isDataLoading ? (
-                                <p>I'm Loading</p>
-                            ) : (
-                                <Weight
-                                    activitiesData={activitiesData.sessions}
-                                />
-                            )}
-                        </div>
+                        {isDataLoading ? (
+                            <p>I'm Loading</p>
+                        ) : (
+                            <Weight activitiesData={activitiesData.sessions} />
+                        )}
                         <div className="rounded-md row-span-2 grid grid-row-4 gap-3">
                             {isDataLoading ? (
                                 <p>I'm Loading</p>
