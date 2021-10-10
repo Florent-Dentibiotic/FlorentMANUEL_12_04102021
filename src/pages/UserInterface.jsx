@@ -1,12 +1,70 @@
 import AsideNav from '../components/AsideNav'
 import Header from '../components/Header'
 import '../index.css'
-import calories from '../imgs/calories-icon.png'
-import protein from '../imgs/protein-icon.png'
-import carbs from '../imgs/carbs-icon.png'
-import fat from '../imgs/fat-icon.png'
+import Weight from '../components/Weight'
+import { useState, useEffect } from 'react'
+import KeyData from '../components/KeyData'
+import SessionDuration from '../components/SessionDuration'
+import Score from '../components/Score'
+import Radar from '../components/Radar'
 
 function UserInterface(props) {
+    const [userData, setUserData] = useState({})
+    const [activitiesData, setActivitiesData] = useState({})
+    const [sessionData, setSessionData] = useState({})
+    const [performanceData, setPerformanceData] = useState({})
+    const [isDataLoading, setDataLoading] = useState(true)
+    const [error, setError] = useState(false)
+
+    useEffect(() => {
+        async function fetchActivities() {
+            setDataLoading(true)
+            try {
+                const response = await fetch(
+                    `http://localhost:3000/user/${props.match.params.userId.slice(
+                        -2
+                    )}`
+                )
+                const { data } = await response.json()
+                setUserData(data)
+
+                const activitiesResponse = await fetch(
+                    `http://localhost:3000/user/${props.match.params.userId.slice(
+                        -2
+                    )}/activity`
+                )
+                const activitiesData = await activitiesResponse.json()
+                setActivitiesData(activitiesData.data)
+
+                const sessionResponse = await fetch(
+                    `http://localhost:3000/user/${props.match.params.userId.slice(
+                        -2
+                    )}/average-sessions`
+                )
+                const sessionData = await sessionResponse.json()
+                setSessionData(sessionData.data)
+
+                const performanceResponse = await fetch(
+                    `http://localhost:3000/user/${props.match.params.userId.slice(
+                        -2
+                    )}/performance`
+                )
+                const performanceData = await performanceResponse.json()
+                setPerformanceData(performanceData.data)
+            } catch (err) {
+                console.log('===== error =====', err)
+                setError(true)
+            } finally {
+                setDataLoading(false)
+            }
+        }
+        fetchActivities()
+    }, [props.match.params.userId])
+
+    if (error) {
+        return <span>Oups il y a eu un problème</span>
+    }
+
     return (
         <>
             <Header />
@@ -17,7 +75,11 @@ function UserInterface(props) {
                         <h1 className="text-5xl mb-5">
                             Bonjour{' '}
                             <span className="text-red-600">
-                                {props.match.params.userId && 'Thomas'}
+                                {isDataLoading ? (
+                                    <p>I'm Loading</p>
+                                ) : (
+                                    userData.userInfos.firstName
+                                )}
                             </span>
                         </h1>
                         <h2 className="mb-5">
@@ -27,53 +89,42 @@ function UserInterface(props) {
                     </div>
                     <div className="grid grid-cols-4 gap-3 h-5/6">
                         <div className="bg-gray-100 rounded-md col-span-3">
-                            {props.match.params.userId}
+                            {isDataLoading ? (
+                                <p>I'm Loading</p>
+                            ) : (
+                                <Weight
+                                    activitiesData={activitiesData.sessions}
+                                />
+                            )}
                         </div>
                         <div className="rounded-md row-span-2 grid grid-row-4 gap-3">
-                            <div className="bg-gray-100 rounded-md flex justify-around items-center">
-                                <img
-                                    src={calories}
-                                    alt="calories"
-                                    className="w-20"
-                                />
-                                <div className="w-32">
-                                    <p className="text-xl font-bold">123kCal</p>
-                                    <p className="text-gray-500">Calories</p>
-                                </div>
-                            </div>
-                            <div className="bg-gray-100 rounded-md flex items-center justify-around">
-                                <img
-                                    src={protein}
-                                    alt="protein"
-                                    className="w-20"
-                                />
-                                <div className="w-32">
-                                    <p className="text-xl font-bold">123g</p>
-                                    <p className="text-gray-500">Protéines</p>
-                                </div>
-                            </div>
-                            <div className="bg-gray-100 rounded-md flex items-center justify-around">
-                                <img src={carbs} alt="apple" className="w-20" />
-                                <div className="w-32">
-                                    <p className="text-xl font-bold">123g</p>
-                                    <p className="text-gray-500">Glucides</p>
-                                </div>
-                            </div>
-                            <div className="bg-gray-100 rounded-md flex items-center justify-around">
-                                <img
-                                    src={fat}
-                                    alt="hamburger"
-                                    className="w-20"
-                                />
-                                <div className="w-32">
-                                    <p className="text-xl font-bold">123g</p>
-                                    <p className="text-gray-500">Lipides</p>
-                                </div>
-                            </div>
+                            {isDataLoading ? (
+                                <p>I'm Loading</p>
+                            ) : (
+                                <KeyData userKeyData={userData.keyData} />
+                            )}
                         </div>
-                        <div className="bg-gray-100 rounded-md"></div>
-                        <div className="bg-gray-100 rounded-md"></div>
-                        <div className="bg-gray-100 rounded-md"></div>
+                        {isDataLoading ? (
+                            <p>I'm Loading</p>
+                        ) : (
+                            <SessionDuration
+                                sessionData={sessionData.sessions}
+                            />
+                        )}
+                        <div className="bg-gray-100 rounded-md">
+                            {isDataLoading ? (
+                                <p>I'm Loading</p>
+                            ) : (
+                                <Radar radarData={performanceData} />
+                            )}
+                        </div>
+                        <div className="bg-gray-100 rounded-md">
+                            {isDataLoading ? (
+                                <p>I'm Loading</p>
+                            ) : (
+                                <Score userScore={userData.todayScore} />
+                            )}
+                        </div>
                     </div>
                 </div>
             </main>
