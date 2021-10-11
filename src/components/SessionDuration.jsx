@@ -57,7 +57,7 @@ function SessionDuration(sessionData) {
 
     return (
         <>
-            <div className="relative session-box rounded-md flex items-center justify-center">
+            <div className="relative session-box rounded-md flex items-center">
                 <p className="absolute top-1/2 left-1/2"></p>
             </div>
         </>

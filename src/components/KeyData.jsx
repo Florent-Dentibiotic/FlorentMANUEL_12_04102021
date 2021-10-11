@@ -30,7 +30,7 @@ function KeyData(userKeyData) {
                 <div className="w-32">
                     <p className="text-xl font-bold">
                         {userKeyData &&
-                            userKeyData.userKeyData.carbohydrateCount}
+                            userKeyData.userKeyData.carbohydrateCount}{' '}
                         g
                     </p>
                     <p className="text-gray-500">Glucides</p>

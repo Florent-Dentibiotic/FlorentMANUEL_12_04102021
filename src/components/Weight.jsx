@@ -6,17 +6,25 @@ function Weight({ activitiesData }) {
 
     useEffect(() => {
         const SvgWeightCreation = () => {
-            const maxKilo = d3.max(activitiesData, (d) => d.kilo)
+            const minKilo = d3.min(activitiesData, (d) => d.kilogram)
+            const maxKilo = d3.max(activitiesData, (d) => d.kilogram)
             const max = d3.max(activitiesData, (d) => d.calories)
 
             const x = d3
                 .scaleBand()
-                .domain([1, 2, 3, 4, 5, 6, 7])
+                .domain(activitiesData.map((item) => item.day))
                 .range([0, 685])
+                .paddingInner(0.95)
 
-            const y = d3.scaleLinear().domain([0, max]).range([140, 0])
+            const y = d3
+                .scaleLinear()
+                .domain([0, max + 50])
+                .range([140, 0])
 
-            const yKilo = d3.scaleLinear().domain([0, maxKilo]).range([140, 0])
+            const yKilo = d3
+                .scaleLinear()
+                .domain([minKilo - 1, maxKilo + 1])
+                .range([140, 0])
 
             const svg = d3
                 .select('.weight-box')
@@ -36,57 +44,127 @@ function Weight({ activitiesData }) {
                 .append('g')
                 .attr('transform', `translate(0, 140)`)
 
+            const groupeXmiddle = graph
+                .append('g')
+                .attr('transform', `translate(0, 70)`)
+
+            const groupeXtop = graph.append('g')
+
             const groupeY = graph
                 .append('g')
-                .attr('transform', `translate(685, 0)`)
+                .attr('transform', `translate(700, 0)`)
 
             const groupKilo = graph
                 .append('g')
-                .attr('transform', `translate(40, 0)`)
+                .attr('transform', `translate(-6, 0)`)
+                .attr('width', 685)
+                .attr('height', 140)
 
             const groupCalories = graph
                 .append('g')
-                .attr('transform', `translate(40, 0)`)
+                .attr('transform', `translate(6, 0)`)
 
             const rectKilo = groupKilo
-                .selectAll('rect')
+                // .selectAll('rect')
+                .selectAll('line')
                 .data(activitiesData)
                 .enter()
-                .append('rect')
-                .attr('width', 7)
-                .attr('height', function (d) {
-                    return 140 - d.kilogram
+                .append('line')
+                .attr('x1', function (d) {
+                    return x(d.day)
                 })
-                .attr('fill', '#282D30')
-                .attr('x', function (d, i) {
-                    return x(i + 1)
+                .attr('x2', function (d) {
+                    return x(d.day)
                 })
-                .attr('y', function (d) {
-                    return d.kilogram
+                .attr('y1', function (d) {
+                    return 140 - yKilo(d.kilogram)
                 })
+                .attr('y2', '140')
+                .attr('stroke', '#000')
+                .attr('stroke-width', '7px')
+                .attr('stroke-linecap', 'round')
+                .attr('class', 'overflow-hidden')
 
             const rectCalories = groupCalories
-                .selectAll('rect')
+                // .append('path')
+                // .attr('fill', 'none')
+                // .attr('stroke', '#E60000')
+                // .attr('stroke-width', '7px')
+                // .attr('stroke-linecap', 'round')
+                .selectAll('line')
                 .data(activitiesData)
                 .enter()
-                .append('rect')
-                .attr('width', 7)
-                .attr('height', function (d) {
-                    return 140 - y(d.calories)
-                })
+                .append('line')
                 .attr('fill', '#E60000')
-                .attr('x', function (d, i) {
-                    return x(i + 1) + 12
+                .attr('x1', function (d) {
+                    return x(d.day)
                 })
-                .attr('y', function (d) {
+                .attr('x2', function (d) {
+                    return x(d.day)
+                })
+                .attr('y2', '140')
+                .attr('y1', function (d) {
                     return y(d.calories)
                 })
+                .attr('stroke', '#E60000')
+                .attr('stroke-width', '7px')
+                .attr('stroke-linecap', 'round')
+                .attr('class', 'overflow-hidden')
 
-            const axeX = d3.axisBottom(x)
-            const axeY = d3.axisRight(yKilo)
+            let tickLabels = ['1', '2', '3', '4', '5', '6', '7']
+            let yTickLabels = [
+                minKilo - 1,
+                (minKilo + maxKilo) / 2,
+                maxKilo + 1,
+            ]
+            const axeX = d3
+                .axisBottom(x)
+                .tickSize(0)
+                .tickFormat((d, i) => tickLabels[i])
+            const axeY = d3.axisRight(yKilo).tickSize(0).ticks(3)
 
             groupeX.call(axeX).style('font-size', '14px')
+            groupeXtop.call(axeX)
+            groupeXmiddle.call(axeX)
+
+            groupeX
+                .select('.domain')
+                .attr('stroke', '#DEDEDE')
+                .attr('stroke-width', 1)
+
+            groupeXtop
+                .select('.domain')
+                .attr('stroke', '#DEDEDE')
+                .attr('stroke-width', 1)
+                .attr('stroke-dasharray', '2')
+
+            groupeXmiddle
+                .select('.domain')
+                .attr('stroke', '#DEDEDE')
+                .attr('stroke-width', 1)
+                .attr('stroke-dasharray', '2')
+
+            groupeX
+                .selectAll('.tick text')
+                .attr('transform', 'translate(0, 10)')
+                .attr('class', 'text-gray-500')
+
+            groupeXmiddle.selectAll('.tick text').attr('class', 'text-gray-50')
+            groupeXtop.selectAll('.tick text').attr('class', 'text-gray-50')
+
             groupeY.call(axeY).style('font-size', '14px')
+
+            groupeY.select('.domain').attr('stroke-width', 0)
+            groupeY
+                .selectAll('.tick text')
+                .attr('transform', 'translate(20, 0)')
+                .attr('class', 'text-gray-500')
+
+            // Légends
+
+            const GroupLegends = graph
+                .append('g')
+                .attr('transform', 'translate(500, 0)')
         }
 
         setSvgWeight(SvgWeightCreation)
