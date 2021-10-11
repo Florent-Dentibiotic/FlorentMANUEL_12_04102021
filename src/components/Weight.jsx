@@ -23,7 +23,7 @@ function Weight({ activitiesData }) {
                 .append('svg')
                 .attr('width', 825)
                 .attr('height', 320)
-                .style('background', '#FBFBFB')
+                .attr('class', 'bg-gray-50')
                 .style('border-radius', '5px')
 
             const graph = svg
@@ -82,7 +82,7 @@ function Weight({ activitiesData }) {
                     return y(d.calories)
                 })
 
-            const axeX = d3.axisBottom(x).ticks(7)
+            const axeX = d3.axisBottom(x)
             const axeY = d3.axisRight(yKilo)
 
             groupeX.call(axeX).style('font-size', '14px')

@@ -107,14 +107,14 @@ function UserInterface(props) {
                                 sessionData={sessionData.sessions}
                             />
                         )}
-                        <div className="bg-gray-100 rounded-md">
+                        <div className="bg-gray-50 rounded-md">
                             {isDataLoading ? (
                                 <p>I'm Loading</p>
                             ) : (
                                 <Radar radarData={performanceData} />
                             )}
                         </div>
-                        <div className="bg-gray-100 rounded-md">
+                        <div className="bg-gray-50 rounded-md">
                             {isDataLoading ? (
                                 <p>I'm Loading</p>
                             ) : (
