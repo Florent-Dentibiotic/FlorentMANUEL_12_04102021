@@ -26,20 +26,21 @@ function SessionDuration(sessionData) {
             })
             .curve(d3.curveBundle)
 
-        const SvgWeightCreation = d3
-            .select('.session-box')
-            .append('svg')
-            .attr('width', 250)
-            .attr('height', 250)
-            .style('background', '#FF0000')
-            .style('border-radius', '5px')
-            .append('g')
-            .attr('transform', 'translate(0, 80)')
-            .append('path')
-            .attr('fill', 'none')
-            .attr('stroke', '#fff')
-            .attr('stroke-width', '2px')
-            .attr('d', valueLine(sessionData.sessionData))
+        const SvgWeightCreation = () => {
+            const svg = d3
+                .select('.session-box')
+                .attr('width', 250)
+                .attr('height', 250)
+                .style('background', '#FF0000')
+                .style('border-radius', '5px')
+                .append('g')
+                .attr('transform', 'translate(0, 100)')
+                .append('path')
+                .attr('fill', 'none')
+                .attr('stroke', '#fff')
+                .attr('stroke-width', '2px')
+                .attr('d', valueLine(sessionData.sessionData))
+        }
 
         // const groupX = SvgWeightCreation.append('g').attr(
         //     'transform',
@@ -50,15 +51,97 @@ function SessionDuration(sessionData) {
 
         // const axeX = d3.axisBottom(axeDays)
 
-        // groupX.call(axeX).style('font-size', '14px')
+        // groupX.call(axeX).style('fontSize', '14px')
 
         setSvgWeight(SvgWeightCreation)
     }, [])
 
     return (
         <>
-            <div className="relative session-box rounded-md flex items-center">
-                <p className="absolute top-1/2 left-1/2"></p>
+            <div className="relative rounded-md flex items-center">
+                <svg className="session-box">
+                    <text
+                        x="32"
+                        y="50"
+                        fill="#FFFFFF"
+                        fontSize="15"
+                        className="opacity-50"
+                    >
+                        Durée moyenne des
+                    </text>
+                    <text
+                        x="32"
+                        y="80"
+                        fill="#FFFFFF"
+                        fontSize="15"
+                        className="opacity-50"
+                    >
+                        sessions
+                    </text>
+                    <text
+                        x="21"
+                        y="225"
+                        fill="#FFFFFF"
+                        fontSize="12"
+                        className="opacity-50"
+                    >
+                        L
+                    </text>
+                    <text
+                        x="55"
+                        y="225"
+                        fill="#FFFFFF"
+                        fontSize="12"
+                        className="opacity-50"
+                    >
+                        M
+                    </text>
+                    <text
+                        x="89"
+                        y="225"
+                        fill="#FFFFFF"
+                        fontSize="12"
+                        className="opacity-50"
+                    >
+                        M
+                    </text>
+                    <text
+                        x="123"
+                        y="225"
+                        fill="#FFFFFF"
+                        fontSize="12"
+                        className="opacity-50"
+                    >
+                        J
+                    </text>
+                    <text
+                        x="157"
+                        y="225"
+                        fill="#FFFFFF"
+                        fontSize="12"
+                        className="opacity-50"
+                    >
+                        V
+                    </text>
+                    <text
+                        x="191"
+                        y="225"
+                        fill="#FFFFFF"
+                        fontSize="12"
+                        className="opacity-50"
+                    >
+                        S
+                    </text>
+                    <text
+                        x="225"
+                        y="225"
+                        fill="#FFFFFF"
+                        fontSize="12"
+                        className="opacity-50"
+                    >
+                        D
+                    </text>
+                </svg>
             </div>
         </>
     )

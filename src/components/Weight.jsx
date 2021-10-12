@@ -27,8 +27,7 @@ function Weight({ activitiesData }) {
                 .range([140, 0])
 
             const svg = d3
-                .select('.weight-box')
-                .append('svg')
+                .select('svg')
                 .attr('width', 825)
                 .attr('height', 320)
                 .attr('class', 'bg-gray-50')
@@ -65,7 +64,6 @@ function Weight({ activitiesData }) {
                 .attr('transform', `translate(6, 0)`)
 
             const rectKilo = groupKilo
-                // .selectAll('rect')
                 .selectAll('line')
                 .data(activitiesData)
                 .enter()
@@ -111,12 +109,16 @@ function Weight({ activitiesData }) {
                 .attr('stroke-linecap', 'round')
                 .attr('class', 'overflow-hidden')
 
+            graph
+                .append('g')
+                .append('rect')
+                .attr('width', 730)
+                .attr('height', 5)
+                .attr('fill', '#FBFBFB')
+                .attr('transform', `translate(-20, 140)`)
+
             let tickLabels = ['1', '2', '3', '4', '5', '6', '7']
-            let yTickLabels = [
-                minKilo - 1,
-                (minKilo + maxKilo) / 2,
-                maxKilo + 1,
-            ]
+
             const axeX = d3
                 .axisBottom(x)
                 .tickSize(0)
@@ -159,20 +161,27 @@ function Weight({ activitiesData }) {
                 .selectAll('.tick text')
                 .attr('transform', 'translate(20, 0)')
                 .attr('class', 'text-gray-500')
-
-            // Légends
-
-            const GroupLegends = graph
-                .append('g')
-                .attr('transform', 'translate(500, 0)')
         }
 
         setSvgWeight(SvgWeightCreation)
     }, [SvgWeight, activitiesData])
 
     return (
-        <div className="rounded-md col-span-3 weight-box">
+        <div className="bg-gray-50 rounded-md col-span-3 flex items-center justify-center">
             {console.log(activitiesData)}
+            <svg>
+                <text x="32" y="50" fill="#20253A" fontSize="15">
+                    Activité quotidienne
+                </text>
+                <circle cx="520" cy="44" r="4" fill="#20253A" />
+                <text x="535" y="50" fill="#20253A" fontSize="15">
+                    Poids (kg)
+                </text>
+                <circle cx="620" cy="44" r="4" fill="#E60000" />
+                <text x="635" y="50" fill="#20253A" fontSize="15">
+                    Calories Brulées (kCal)
+                </text>
+            </svg>
         </div>
     )
 }
