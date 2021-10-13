@@ -31,7 +31,8 @@ function SessionDuration(sessionData) {
                 .select('.session-box')
                 .attr('width', 250)
                 .attr('height', 250)
-                .style('background', '#FF0000')
+                .attr('class', 'bg-red-600')
+                //.style('background', '#FF0000')
                 .style('border-radius', '5px')
                 .append('g')
                 .attr('transform', 'translate(0, 100)')
@@ -39,7 +40,13 @@ function SessionDuration(sessionData) {
                 .attr('fill', 'none')
                 .attr('stroke', '#fff')
                 .attr('stroke-width', '2px')
+                .attr('stroke-dasharray', 250)
+                .attr('stroke-dashoffset', 250)
                 .attr('d', valueLine(sessionData.sessionData))
+                .transition()
+                .duration(600)
+                .attr('stroke-dasharray', 0)
+                .attr('stroke-dashoffset', 0)
         }
 
         // const groupX = SvgWeightCreation.append('g').attr(
@@ -58,7 +65,7 @@ function SessionDuration(sessionData) {
 
     return (
         <>
-            <div className="relative rounded-md flex items-center">
+            <div className="relative rounded-md flex justify-center items-center bg-red-600">
                 <svg className="session-box">
                     <text
                         x="32"

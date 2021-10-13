@@ -6,6 +6,7 @@ function Score(userScore) {
 
     useEffect(() => {
         const SvgWeightCreation = () => {
+            console.log(userScore.userScore)
             const svg = d3
                 .select('.score-box')
                 .attr('width', 250)
@@ -13,20 +14,27 @@ function Score(userScore) {
                 .attr('class', 'bg-gray-50')
                 .style('border-radius', '5px')
 
-            svg.append('arc')
-                .attr('innerRadius', '0')
-                .attr('outerRadius', '100')
-                .attr('startAngle', '0')
-                .attr('endAngle', 360 * userScore.userScore)
+            const arc = d3
+                .arc()
+                .innerRadius(82)
+                .outerRadius(92)
+                .startAngle(0)
+                .endAngle(-Math.PI * 2 * userScore.userScore)
+                .cornerRadius(5)
+
+            svg.append('path')
+                .attr('class', 'arc')
+                .attr('fill', 'red')
                 .attr('transform', 'translate(125, 125)')
-                .attr('stroke', '#000')
-                .attr('stroke-width', '6px')
+                .attr('d', arc)
+                .transition()
+                .duration(600)
         }
 
         setSvgWeight(SvgWeightCreation)
     }, [])
     return (
-        <div className="rounded-md flex items-center justify-end">
+        <div className="rounded-md flex items-center justify-center bg-gray-50">
             <svg className="score-box">
                 <circle cx="125" cy="125" r="87" fill="white"></circle>
                 <text x="32" y="35" fill="#20253A" fontSize="15">
@@ -34,7 +42,7 @@ function Score(userScore) {
                 </text>
                 <text
                     x="109"
-                    y="115"
+                    y="100"
                     fill="#20253A"
                     fontSize="19"
                     fontWeight="bold"
@@ -42,8 +50,8 @@ function Score(userScore) {
                     {userScore.userScore * 100}%
                 </text>
                 <text
-                    x="105"
-                    y="145"
+                    x="102"
+                    y="130"
                     fill="#20253A"
                     fontSize="16"
                     className="opacity-50"
@@ -52,7 +60,7 @@ function Score(userScore) {
                 </text>
                 <text
                     x="105"
-                    y="175"
+                    y="160"
                     fill="#20253A"
                     fontSize="16"
                     className="opacity-50"

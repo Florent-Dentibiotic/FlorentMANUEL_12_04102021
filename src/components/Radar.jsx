@@ -12,7 +12,6 @@ function Radar(radarData) {
         const speed = radarData.radarData.data[4].value
         const intensity = radarData.radarData.data[5].value
 
-        console.log(radarData.radarData)
         const maxValue = [
             cardio,
             energy,
@@ -23,8 +22,6 @@ function Radar(radarData) {
         ].sort(function (a, b) {
             return b - a
         })
-
-        console.log(maxValue[0])
 
         function resizeValue(size) {
             return (85 * size) / (maxValue[0] + 10)
@@ -67,8 +64,6 @@ function Radar(radarData) {
                 130 - Math.cos(Math.PI / 3) * size
             }, 125 ${130 - size}`
         }
-
-        console.log(newHexagon(85))
 
         const dPath = `M${intensityCoord.axeX} ${intensityCoord.axeY}, ${speedCoord.axeX} ${speedCoord.axeY}, ${strengthCoord.axeX} ${strengthCoord.axeY}, ${enduranceCoord.axeX} ${enduranceCoord.axeY},${energyCoord.axeX} ${energyCoord.axeY}, ${cardioCoord.axeX} ${cardioCoord.axeY}Z`
 
@@ -113,13 +108,16 @@ function Radar(radarData) {
             //.attr('transform', 'translate(0, 100)')
             .append('path')
             .attr('fill', '#FF0101')
+            .attr('d', newHexagon(0))
+            .transition()
+            .duration(600)
             .attr('d', dPath)
             .attr('class', 'opacity-70')
 
         setSvgWeight(SvgWeightCreation)
     }, [])
     return (
-        <div className="rounded-md flex items-center justify-center">
+        <div className="rounded-md flex items-center justify-center bg-black">
             <svg className="radar-box">
                 <text x="100" y="30" fill="#fff" fontSize="12">
                     Intensité

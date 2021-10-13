@@ -74,21 +74,19 @@ function Weight({ activitiesData }) {
                 .attr('x2', function (d) {
                     return x(d.day)
                 })
-                .attr('y1', function (d) {
-                    return 140 - yKilo(d.kilogram)
-                })
                 .attr('y2', '140')
+                .attr('y1', '140')
                 .attr('stroke', '#000')
                 .attr('stroke-width', '7px')
                 .attr('stroke-linecap', 'round')
                 .attr('class', 'overflow-hidden')
+                .transition()
+                .duration(600)
+                .attr('y2', function (d) {
+                    return 140 - yKilo(d.kilogram)
+                })
 
             const rectCalories = groupCalories
-                // .append('path')
-                // .attr('fill', 'none')
-                // .attr('stroke', '#E60000')
-                // .attr('stroke-width', '7px')
-                // .attr('stroke-linecap', 'round')
                 .selectAll('line')
                 .data(activitiesData)
                 .enter()
@@ -101,13 +99,16 @@ function Weight({ activitiesData }) {
                     return x(d.day)
                 })
                 .attr('y2', '140')
-                .attr('y1', function (d) {
-                    return y(d.calories)
-                })
+                .attr('y1', '140')
                 .attr('stroke', '#E60000')
                 .attr('stroke-width', '7px')
                 .attr('stroke-linecap', 'round')
                 .attr('class', 'overflow-hidden')
+                .transition()
+                .duration(600)
+                .attr('y1', function (d) {
+                    return y(d.calories)
+                })
 
             graph
                 .append('g')
