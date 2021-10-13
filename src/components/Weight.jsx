@@ -168,7 +168,6 @@ function Weight({ activitiesData }) {
 
     return (
         <div className="bg-gray-50 rounded-md col-span-3 flex items-center justify-center">
-            {console.log(activitiesData)}
             <svg>
                 <text x="32" y="50" fill="#20253A" fontSize="15">
                     Activité quotidienne

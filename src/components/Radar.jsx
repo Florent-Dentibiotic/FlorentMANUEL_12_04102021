@@ -5,6 +5,73 @@ function Radar(radarData) {
     const [SvgWeight, setSvgWeight] = useState()
 
     useEffect(() => {
+        const cardio = radarData.radarData.data[0].value
+        const energy = radarData.radarData.data[1].value
+        const endurance = radarData.radarData.data[2].value
+        const strength = radarData.radarData.data[3].value
+        const speed = radarData.radarData.data[4].value
+        const intensity = radarData.radarData.data[5].value
+
+        console.log(radarData.radarData)
+        const maxValue = [
+            cardio,
+            energy,
+            endurance,
+            strength,
+            speed,
+            intensity,
+        ].sort(function (a, b) {
+            return b - a
+        })
+
+        console.log(maxValue[0])
+
+        function resizeValue(size) {
+            return (85 * size) / (maxValue[0] + 10)
+        }
+
+        const cardioCoord = {
+            axeX: 125 - Math.sin(Math.PI / 3) * resizeValue(cardio),
+            axeY: 130 - Math.cos(Math.PI / 3) * resizeValue(cardio),
+        }
+
+        const energyCoord = {
+            axeX: 125 - Math.sin(Math.PI / 3) * resizeValue(energy),
+            axeY: 130 + Math.cos(Math.PI / 3) * resizeValue(energy),
+        }
+        const enduranceCoord = {
+            axeX: 125,
+            axeY: 130 + resizeValue(endurance),
+        }
+        const strengthCoord = {
+            axeX: 125 + Math.sin(Math.PI / 3) * resizeValue(strength),
+            axeY: 130 + Math.cos(Math.PI / 3) * resizeValue(strength),
+        }
+        const speedCoord = {
+            axeX: 125 + Math.sin(Math.PI / 3) * resizeValue(speed),
+            axeY: 130 - Math.cos(Math.PI / 3) * resizeValue(speed),
+        }
+        const intensityCoord = {
+            axeX: 125,
+            axeY: 130 - resizeValue(intensity),
+        }
+
+        function newHexagon(size) {
+            return `M125 ${130 - size}, ${125 + Math.sin(Math.PI / 3) * size} ${
+                130 - Math.cos(Math.PI / 3) * size
+            }, ${125 + Math.sin(Math.PI / 3) * size} ${
+                130 + Math.cos(Math.PI / 3) * size
+            }, 125 ${130 + size}, ${125 - Math.sin(Math.PI / 3) * size} ${
+                130 + Math.cos(Math.PI / 3) * size
+            }, ${125 - Math.sin(Math.PI / 3) * size} ${
+                130 - Math.cos(Math.PI / 3) * size
+            }, 125 ${130 - size}`
+        }
+
+        console.log(newHexagon(85))
+
+        const dPath = `M${intensityCoord.axeX} ${intensityCoord.axeY}, ${speedCoord.axeX} ${speedCoord.axeY}, ${strengthCoord.axeX} ${strengthCoord.axeY}, ${enduranceCoord.axeX} ${enduranceCoord.axeY},${energyCoord.axeX} ${energyCoord.axeY}, ${cardioCoord.axeX} ${cardioCoord.axeY}Z`
+
         const SvgWeightCreation = d3
             .select('.radar-box')
             .attr('width', 250)
@@ -12,36 +79,48 @@ function Radar(radarData) {
             .style('background', '#000')
             .style('border-radius', '5px')
 
+        SvgWeightCreation.append('g')
+            .append('path')
+            .attr('fill', 'none')
+            .attr('stroke', '#fff')
+            .attr('d', newHexagon(85))
+
+        SvgWeightCreation.append('g')
+            .append('path')
+            .attr('fill', 'none')
+            .attr('stroke', '#fff')
+            .attr('d', newHexagon(65))
+
+        SvgWeightCreation.append('g')
+            .append('path')
+            .attr('fill', 'none')
+            .attr('stroke', '#fff')
+            .attr('d', newHexagon(45))
+
+        SvgWeightCreation.append('g')
+            .append('path')
+            .attr('fill', 'none')
+            .attr('stroke', '#fff')
+            .attr('d', newHexagon(25))
+
+        SvgWeightCreation.append('g')
+            .append('path')
+            .attr('fill', 'none')
+            .attr('stroke', '#fff')
+            .attr('d', newHexagon(12))
+
+        SvgWeightCreation.append('g')
+            //.attr('transform', 'translate(0, 100)')
+            .append('path')
+            .attr('fill', '#FF0101')
+            .attr('d', dPath)
+            .attr('class', 'opacity-70')
+
         setSvgWeight(SvgWeightCreation)
     }, [])
     return (
         <div className="rounded-md flex items-center justify-center">
             <svg className="radar-box">
-                <path
-                    d="M125 45, 200 90, 200 170, 125 215 , 50 170, 50 90 Z"
-                    fill="transparent"
-                    stroke="white"
-                />
-                <path
-                    d="M125 68, 180 100, 180 160, 125 192 , 70 160, 70 100 Z"
-                    fill="transparent"
-                    stroke="white"
-                />
-                <path
-                    d="M125 90, 162 110, 162 150, 125 171, 88 150, 88 110 Z"
-                    fill="transparent"
-                    stroke="white"
-                />
-                <path
-                    d="M125 109, 144 120, 144 140, 125 152, 106 140, 106 120 Z"
-                    fill="transparent"
-                    stroke="white"
-                />
-                <path
-                    d="M125 120, 134 125, 134 135, 125 141, 116 135, 116 125 Z"
-                    fill="transparent"
-                    stroke="white"
-                />
                 <text x="100" y="30" fill="#fff" fontSize="12">
                     Intensité
                 </text>
@@ -61,7 +140,6 @@ function Radar(radarData) {
                     Cardio
                 </text>
             </svg>
-            <div>{console.log(radarData.radarData.data[0].value)}</div>
         </div>
     )
 }
