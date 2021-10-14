@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals'
 import Home from './pages/Home'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import UserInterface from './pages/UserInterface'
+import Error from './components/Error'
 
 ReactDOM.render(
     <React.StrictMode>
@@ -12,7 +13,10 @@ ReactDOM.render(
             <Route exact path="/">
                 <Home />
             </Route>
-            <Route path="/user/:userId" component={UserInterface}></Route>
+            <Route exact path="/user/:userId" component={UserInterface}></Route>
+            <Route>
+                <Error />
+            </Route>
         </Router>
     </React.StrictMode>,
     document.getElementById('root')
