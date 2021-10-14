@@ -7,6 +7,7 @@ import KeyData from '../components/KeyData'
 import SessionDuration from '../components/SessionDuration'
 import Score from '../components/Score'
 import Radar from '../components/Radar'
+import UserService from '../services/UserService'
 
 function UserInterface(props) {
     const [userData, setUserData] = useState({})
@@ -20,6 +21,13 @@ function UserInterface(props) {
         async function fetchActivities() {
             setDataLoading(true)
             try {
+                // ;<UserService
+                //     url={`http://localhost:3000/user/${props.match.params.userId.slice(
+                //         -2
+                //     )}`}
+                // />
+                // // const user = await UserService.logUser()
+                // // console.log(user)
                 const response = await fetch(
                     `http://localhost:3000/user/${props.match.params.userId.slice(
                         -2
