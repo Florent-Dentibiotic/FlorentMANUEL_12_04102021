@@ -3,14 +3,14 @@ import protein from '../imgs/protein-icon.png'
 import carbs from '../imgs/carbs-icon.png'
 import fat from '../imgs/fat-icon.png'
 
-function KeyData(userKeyData) {
+function KeyData({ keyData }) {
     return (
         <>
             <div className="bg-gray-50 rounded-md flex justify-around items-center">
                 <img src={calories} alt="calories" className="w-20" />
                 <div className="w-32">
                     <p className="text-xl font-bold">
-                        {userKeyData && userKeyData.userKeyData.calorieCount}
+                        {keyData.calorieCount}
                         kCal
                     </p>
                     <p className="text-gray-500">Calories</p>
@@ -20,7 +20,7 @@ function KeyData(userKeyData) {
                 <img src={protein} alt="protein" className="w-20" />
                 <div className="w-32">
                     <p className="text-xl font-bold">
-                        {userKeyData && userKeyData.userKeyData.proteinCount} g
+                        {keyData.proteinCount} g
                     </p>
                     <p className="text-gray-500">Protéines</p>
                 </div>
@@ -29,9 +29,7 @@ function KeyData(userKeyData) {
                 <img src={carbs} alt="apple" className="w-20" />
                 <div className="w-32">
                     <p className="text-xl font-bold">
-                        {userKeyData &&
-                            userKeyData.userKeyData.carbohydrateCount}{' '}
-                        g
+                        {keyData.carbohydrateCount} g
                     </p>
                     <p className="text-gray-500">Glucides</p>
                 </div>
@@ -39,9 +37,7 @@ function KeyData(userKeyData) {
             <div className="bg-gray-50 rounded-md flex items-center justify-around">
                 <img src={fat} alt="hamburger" className="w-20" />
                 <div className="w-32">
-                    <p className="text-xl font-bold">
-                        {userKeyData && userKeyData.userKeyData.lipidCount} g
-                    </p>
+                    <p className="text-xl font-bold">{keyData.lipidCount} g</p>
                     <p className="text-gray-500">Lipides</p>
                 </div>
             </div>

@@ -13,8 +13,6 @@ function SessionDuration(sessionData) {
         .domain([0, d3.max(sessionData.sessionData, (d) => d.sessionLength)])
         .range([130, 0])
 
-    //const Days = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
-
     useEffect(() => {
         let valueLine = d3
             .line()
@@ -32,9 +30,9 @@ function SessionDuration(sessionData) {
                 .attr('width', 250)
                 .attr('height', 250)
                 .attr('class', 'bg-red-600')
-                //.style('background', '#FF0000')
                 .style('border-radius', '5px')
-                .append('g')
+
+            svg.append('g')
                 .attr('transform', 'translate(0, 100)')
                 .append('path')
                 .attr('fill', 'none')

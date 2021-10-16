@@ -2,12 +2,12 @@ import UserKeyData from '../core/UserKeyData'
 
 export default class UserKeyDataMapper {
     static convertToKeyData(json) {
-        return UserKeyData({
-            id: json.id,
-            calories: json.keyData.calorieCount,
-            protein: json.keyData.proteinCount,
-            carb: json.keyData.carbohydrateCount,
-            lipid: json.keyData.lipidCount,
-        })
+        return new UserKeyData(
+            json.id,
+            json.keyData.calorieCount,
+            json.keyData.proteinCount,
+            json.keyData.carbohydrateCount,
+            json.keyData.lipidCount
+        )
     }
 }

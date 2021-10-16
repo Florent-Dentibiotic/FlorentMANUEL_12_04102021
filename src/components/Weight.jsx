@@ -80,6 +80,8 @@ function Weight({ activitiesData }) {
                 .attr('stroke-width', '7px')
                 .attr('stroke-linecap', 'round')
                 .attr('class', 'overflow-hidden')
+
+            rectKilo
                 .transition()
                 .duration(600)
                 .attr('y2', function (d) {
@@ -104,6 +106,8 @@ function Weight({ activitiesData }) {
                 .attr('stroke-width', '7px')
                 .attr('stroke-linecap', 'round')
                 .attr('class', 'overflow-hidden')
+
+            rectCalories
                 .transition()
                 .duration(600)
                 .attr('y1', function (d) {

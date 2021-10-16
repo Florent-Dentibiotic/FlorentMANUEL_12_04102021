@@ -1,10 +1,6 @@
 export default class UserPerformanceData {
-    constructor(id, cardio, energy, strengh, speed, intensity) {
+    constructor(id, perfs) {
         this.userId = id
-        this.cardio = cardio
-        this.energy = energy
-        this.strengh = strengh
-        this.speed = speed
-        this.intensity = intensity
+        this.perfs = perfs
     }
 }

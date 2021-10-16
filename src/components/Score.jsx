@@ -1,12 +1,11 @@
 import * as d3 from 'd3'
 import { useEffect, useState } from 'react'
 
-function Score(userScore) {
+function Score(data) {
     const [SvgWeight, setSvgWeight] = useState()
 
     useEffect(() => {
         const SvgWeightCreation = () => {
-            console.log(userScore.userScore)
             const svg = d3
                 .select('.score-box')
                 .attr('width', 250)
@@ -19,7 +18,7 @@ function Score(userScore) {
                 .innerRadius(82)
                 .outerRadius(92)
                 .startAngle(0)
-                .endAngle(-Math.PI * 2 * userScore.userScore)
+                .endAngle(-Math.PI * 2 * data.userScore)
                 .cornerRadius(5)
 
             svg.append('path')
@@ -32,7 +31,7 @@ function Score(userScore) {
         }
 
         setSvgWeight(SvgWeightCreation)
-    }, [])
+    }, [data])
     return (
         <div className="rounded-md flex items-center justify-center bg-gray-50">
             <svg className="score-box">
@@ -47,7 +46,7 @@ function Score(userScore) {
                     fontSize="19"
                     fontWeight="bold"
                 >
-                    {userScore.userScore * 100}%
+                    {data.userScore * 100}%
                 </text>
                 <text
                     x="102"
