@@ -252,6 +252,9 @@ function Weight({ activitiesData }) {
                         return index * 113 + 55
                     })
                     .attr('y', 20)
+
+                // eslint-disable-next-line array-callback-return
+                return
             })
         }
 

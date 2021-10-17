@@ -140,6 +140,9 @@ function SessionDuration(sessionData) {
                     })
                     .attr('transform', 'translate(7, 85)')
                     .attr('opacity', 0)
+
+                // eslint-disable-next-line array-callback-return
+                return
             })
         }
         setSvgWeight(SvgWeightCreation)
