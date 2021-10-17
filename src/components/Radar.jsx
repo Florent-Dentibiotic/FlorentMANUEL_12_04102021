@@ -2,7 +2,7 @@ import * as d3 from 'd3'
 import { useEffect, useState } from 'react'
 
 function Radar(userPerformanceData) {
-    const [SvgWeight, setSvgWeight] = useState()
+    const [SvgRadar, setSvgWeight] = useState()
 
     useEffect(() => {
         const SvgWeightCreation = () => {
@@ -106,7 +106,6 @@ function Radar(userPerformanceData) {
                 .attr('d', newHexagon(12))
 
             svg.append('g')
-                //.attr('transform', 'translate(0, 100)')
                 .append('path')
                 .attr('fill', '#FF0101')
                 .attr('d', newHexagon(0))
@@ -117,7 +116,15 @@ function Radar(userPerformanceData) {
         }
 
         setSvgWeight(SvgWeightCreation)
-    }, [])
+    }, [
+        SvgRadar,
+        userPerformanceData.userPerformanceData.cardio,
+        userPerformanceData.userPerformanceData.endurance,
+        userPerformanceData.userPerformanceData.energy,
+        userPerformanceData.userPerformanceData.intensity,
+        userPerformanceData.userPerformanceData.speed,
+        userPerformanceData.userPerformanceData.strength,
+    ])
     return (
         <div className="rounded-md flex items-center justify-center bg-black">
             <svg className="radar-box">

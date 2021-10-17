@@ -2,7 +2,7 @@ import * as d3 from 'd3'
 import { useEffect, useState } from 'react'
 
 function Score(data) {
-    const [SvgWeight, setSvgWeight] = useState()
+    const [SvgScore, setSvgWeight] = useState()
 
     useEffect(() => {
         const SvgWeightCreation = () => {
@@ -31,7 +31,7 @@ function Score(data) {
         }
 
         setSvgWeight(SvgWeightCreation)
-    }, [data])
+    }, [SvgScore, data])
     return (
         <div className="rounded-md flex items-center justify-center bg-gray-50">
             <svg className="score-box">

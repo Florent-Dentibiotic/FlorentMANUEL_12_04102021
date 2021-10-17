@@ -36,12 +36,12 @@ function Weight({ activitiesData }) {
             const graph = svg
                 .append('g')
                 .attr('width', 685)
-                .attr('height', 140)
+                .attr('height', 160)
                 .attr('transform', 'translate(50, 110)')
 
             const groupeX = graph
                 .append('g')
-                .attr('transform', `translate(0, 140)`)
+                .attr('transform', `translate(0, 139)`)
 
             const groupeXmiddle = graph
                 .append('g')
@@ -79,7 +79,6 @@ function Weight({ activitiesData }) {
                 .attr('stroke', '#000')
                 .attr('stroke-width', '7px')
                 .attr('stroke-linecap', 'round')
-                .attr('class', 'overflow-hidden')
 
             rectKilo
                 .transition()
@@ -156,8 +155,8 @@ function Weight({ activitiesData }) {
                 .attr('transform', 'translate(0, 10)')
                 .attr('class', 'text-gray-500')
 
-            groupeXmiddle.selectAll('.tick text').attr('class', 'text-gray-50')
-            groupeXtop.selectAll('.tick text').attr('class', 'text-gray-50')
+            groupeXmiddle.selectAll('.tick text').attr('opacity', '0')
+            groupeXtop.selectAll('.tick text').attr('opacity', '0')
 
             groupeY.call(axeY).style('font-size', '14px')
 
@@ -166,6 +165,94 @@ function Weight({ activitiesData }) {
                 .selectAll('.tick text')
                 .attr('transform', 'translate(20, 0)')
                 .attr('class', 'text-gray-500')
+
+            /* MOUSE OVER ANIMATIONS */
+
+            activitiesData.map((data, index) => {
+                const animations = graph
+                    .append('g')
+                    .attr('transform', 'translate(-25, 0)')
+
+                animations
+                    .append('rect')
+                    .attr('id', `rect${index}`)
+                    .attr('width', 40)
+                    .attr('height', 55)
+                    .attr('fill', 'red')
+                    .attr('x', function (d) {
+                        return index * 113 + 50
+                    })
+                    .attr('y', -20)
+                    .attr('opacity', '0')
+
+                animations
+                    .append('rect')
+                    .attr('width', 50)
+                    .attr('height', 140)
+                    .attr('fill', '#C4C4C4')
+                    .attr('x', function (d) {
+                        return index * 113
+                    })
+                    .attr('opacity', '0')
+                    .on('mouseover', function () {
+                        d3.select(this)
+                            .transition()
+                            .duration('150')
+                            .attr('opacity', '.3')
+                        d3.select(`#rect${index}`)
+                            .transition()
+                            .duration('150')
+                            .attr('opacity', '1')
+                        d3.select(`#kg${index}`)
+                            .transition()
+                            .duration('150')
+                            .attr('opacity', '1')
+                        d3.select(`#cal${index}`)
+                            .transition()
+                            .duration('150')
+                            .attr('opacity', '1')
+                    })
+                    .on('mouseout', function () {
+                        d3.select(this)
+                            .transition()
+                            .duration('150')
+                            .attr('opacity', '0')
+                        d3.select(`#rect${index}`)
+                            .transition()
+                            .duration('150')
+                            .attr('opacity', '0')
+                        d3.select(`#kg${index}`)
+                            .transition()
+                            .duration('150')
+                            .attr('opacity', '0')
+                        d3.select(`#cal${index}`)
+                            .transition()
+                            .duration('150')
+                            .attr('opacity', '0')
+                    })
+
+                animations
+                    .append('text')
+                    .attr('id', 'kg' + index)
+                    .text(data.kilogram + 'kg')
+                    .attr('font-size', '8')
+                    .attr('fill', 'white')
+                    .attr('x', function (d) {
+                        return index * 113 + 60
+                    })
+                    .attr('opacity', '0')
+
+                animations
+                    .append('text')
+                    .attr('id', 'cal' + index)
+                    .text(data.calories + 'kCal')
+                    .attr('font-size', '8')
+                    .attr('fill', 'white')
+                    .attr('x', function (d) {
+                        return index * 113 + 55
+                    })
+                    .attr('y', 20)
+            })
         }
 
         setSvgWeight(SvgWeightCreation)

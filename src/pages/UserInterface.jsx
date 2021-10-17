@@ -23,7 +23,6 @@ function UserInterface() {
     const { sessionsData, sessionsLoaded, errorSessions } = useFetchSessions(
         userId.slice(-2)
     )
-    sessionsLoaded && console.log(sessionsData)
 
     if (error || errorActivities || errorPerf || errorSessions) {
         return <Error />

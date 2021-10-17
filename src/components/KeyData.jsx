@@ -10,8 +10,7 @@ function KeyData({ keyData }) {
                 <img src={calories} alt="calories" className="w-20" />
                 <div className="w-32">
                     <p className="text-xl font-bold">
-                        {keyData.calorieCount}
-                        kCal
+                        {keyData.calorieCount} kCal
                     </p>
                     <p className="text-gray-500">Calories</p>
                 </div>
