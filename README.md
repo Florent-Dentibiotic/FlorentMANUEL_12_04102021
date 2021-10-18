@@ -1,8 +1,6 @@
-![alt text](https://github.com/Florent-Dentibiotic/FlorentMANUEL_12_04102021/blob/services/src/assets/logo-2.png)
+<h1 align="center">![alt text](https://github.com/Florent-Dentibiotic/FlorentMANUEL_12_04102021/blob/services/src/assets/logo-2.png)</h1>
 
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Getting Started with SportSee
 
 ## Available Scripts
 
