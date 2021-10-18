@@ -1,7 +1,7 @@
 import * as d3 from 'd3'
 import { useEffect, useState } from 'react'
 
-function Radar(userPerformanceData) {
+function RadarChart(userPerformanceData) {
     const [SvgRadar, setSvgWeight] = useState()
 
     useEffect(() => {
@@ -126,29 +126,27 @@ function Radar(userPerformanceData) {
         userPerformanceData.userPerformanceData.strength,
     ])
     return (
-        <div className="rounded-md flex items-center justify-center bg-black">
-            <svg className="radar-box">
-                <text x="100" y="30" fill="#fff" fontSize="12">
-                    Intensité
-                </text>
-                <text x="210" y="90" fill="#fff" fontSize="12">
-                    Vitesse
-                </text>
-                <text x="210" y="170" fill="#fff" fontSize="12">
-                    Force
-                </text>
-                <text x="100" y="230" fill="#fff" fontSize="12">
-                    Endurance
-                </text>
-                <text x="5" y="170" fill="#fff" fontSize="12">
-                    Energie
-                </text>
-                <text x="5" y="90" fill="#fff" fontSize="12">
-                    Cardio
-                </text>
-            </svg>
-        </div>
+        <svg className="radar-box">
+            <text x="100" y="30" fill="#fff" fontSize="12">
+                Intensité
+            </text>
+            <text x="210" y="90" fill="#fff" fontSize="12">
+                Vitesse
+            </text>
+            <text x="210" y="170" fill="#fff" fontSize="12">
+                Force
+            </text>
+            <text x="100" y="230" fill="#fff" fontSize="12">
+                Endurance
+            </text>
+            <text x="5" y="170" fill="#fff" fontSize="12">
+                Energie
+            </text>
+            <text x="5" y="90" fill="#fff" fontSize="12">
+                Cardio
+            </text>
+        </svg>
     )
 }
 
-export default Radar
+export default RadarChart

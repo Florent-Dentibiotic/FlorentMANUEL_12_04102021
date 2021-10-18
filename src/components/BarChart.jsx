@@ -1,7 +1,7 @@
 import * as d3 from 'd3'
 import { useState, useEffect } from 'react'
 
-function Weight({ activitiesData }) {
+function BarChart({ activitiesData }) {
     const [SvgWeight, setSvgWeight] = useState()
 
     useEffect(() => {
@@ -262,22 +262,20 @@ function Weight({ activitiesData }) {
     }, [SvgWeight, activitiesData])
 
     return (
-        <div className="bg-gray-50 rounded-md col-span-3 flex items-center justify-center">
-            <svg>
-                <text x="32" y="50" fill="#20253A" fontSize="15">
-                    Activité quotidienne
-                </text>
-                <circle cx="520" cy="44" r="4" fill="#20253A" />
-                <text x="535" y="50" fill="#20253A" fontSize="15">
-                    Poids (kg)
-                </text>
-                <circle cx="620" cy="44" r="4" fill="#E60000" />
-                <text x="635" y="50" fill="#20253A" fontSize="15">
-                    Calories Brulées (kCal)
-                </text>
-            </svg>
-        </div>
+        <svg>
+            <text x="32" y="50" fill="#20253A" fontSize="15">
+                Activité quotidienne
+            </text>
+            <circle cx="520" cy="44" r="4" fill="#20253A" />
+            <text x="535" y="50" fill="#20253A" fontSize="15">
+                Poids (kg)
+            </text>
+            <circle cx="620" cy="44" r="4" fill="#E60000" />
+            <text x="635" y="50" fill="#20253A" fontSize="15">
+                Calories Brulées (kCal)
+            </text>
+        </svg>
     )
 }
 
-export default Weight
+export default BarChart
