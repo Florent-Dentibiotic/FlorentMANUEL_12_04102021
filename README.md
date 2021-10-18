@@ -1,4 +1,4 @@
-<h1 align="center">![alt text](https://github.com/Florent-Dentibiotic/FlorentMANUEL_12_04102021/blob/services/src/assets/logo-2.png)</h1>
+<h1 align="center"><img src="https://github.com/Florent-Dentibiotic/FlorentMANUEL_12_04102021/blob/services/src/assets/logo-2.png"/></h1>
 
 # Getting Started with SportSee
 
