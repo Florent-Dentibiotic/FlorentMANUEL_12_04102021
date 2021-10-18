@@ -1,4 +1,4 @@
-![alt text](../src/assets/logo-2.png)
+![alt text](https://github.com/Florent-Dentibiotic/FlorentMANUEL_12_04102021/blob/services/src/assets/logo-2.png)
 
 # Getting Started with Create React App
 
