@@ -32,7 +32,9 @@ function Home() {
                     >
                         Envoyer
                     </button>
-                    {toDashboard ? <Redirect to={`/user/${user}`} /> : null}
+                    {toDashboard ? (
+                        <Redirect to={`/user/${user.slice(-2)}/dashboard`} />
+                    ) : null}
                 </form>
             </main>
         </>

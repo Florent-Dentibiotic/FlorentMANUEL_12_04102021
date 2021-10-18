@@ -2,16 +2,15 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import UserPerformanceMapper from '../mapper/UserPerformanceMapper'
 
-function useFetchPerf(userId) {
+function useFetchPerf(id) {
     const [errorPerf, setError] = useState(null)
     const [performanceLoaded, setIsLoaded] = useState(false)
     const [performanceData, setPerformanceData] = useState({})
 
-    // Remarque : le tableau vide de dépendances [] indique
-    // que useEffect ne s’exécutera qu’une fois, un peu comme
-    // componentDidMount()
     useEffect(() => {
-        fetch(`http://localhost:3000/user/${userId}/performance`)
+        fetch(`http://localhost:3000/user/${id}/performance`)
+            //** MOCK LINK **
+            //fetch(`../user/${id}/performance.json`)
             .then((res) => res.json())
             .then(
                 ({ data }) => {
@@ -20,14 +19,11 @@ function useFetchPerf(userId) {
                     )
                     setIsLoaded(true)
                 },
-                // Remarque : il faut gérer les erreurs ici plutôt que dans
-                // un bloc catch() afin que nous n’avalions pas les exceptions
-                // dues à de véritables bugs dans les composants.
                 (error) => {
                     setError(error)
                 }
             )
-    }, [userId])
+    }, [id])
 
     if (errorPerf) {
         return <div>Erreur</div>

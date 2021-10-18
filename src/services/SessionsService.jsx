@@ -2,13 +2,15 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import UserSessionsMapper from '../mapper/UserSessionsMapper'
 
-function useFetchSessions(userId) {
+function useFetchSessions(id) {
     const [errorSessions, setError] = useState(null)
     const [sessionsLoaded, setIsLoaded] = useState(false)
     const [sessionsData, setsessionsData] = useState({})
 
     useEffect(() => {
-        fetch(`http://localhost:3000/user/${userId}/average-sessions`)
+        fetch(`http://localhost:3000/user/${id}/average-sessions`)
+            //** MOCK LINK **
+            //fetch(`../user/${id}/average-sessions.json`)
             .then((res) => res.json())
             .then(
                 ({ data }) => {
@@ -19,7 +21,7 @@ function useFetchSessions(userId) {
                     setError(error)
                 }
             )
-    }, [userId])
+    }, [id])
 
     if (errorSessions) {
         return <div>Erreur</div>

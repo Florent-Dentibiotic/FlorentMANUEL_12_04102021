@@ -2,13 +2,15 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import UserActivitiesMapper from '../mapper/UserActivitiesMapper'
 
-function useFetchActivities(userId) {
+function useFetchActivities(id) {
     const [errorActivities, setError] = useState(null)
     const [activitiesLoaded, setIsLoaded] = useState(false)
     const [activitiesData, setActivitiesData] = useState({})
 
     useEffect(() => {
-        fetch(`http://localhost:3000/user/${userId}/activity`)
+        fetch(`http://localhost:3000/user/${id}/activity`)
+            //** MOCK LINK **
+            //fetch(`../user/${id}/activity.json`)
             .then((res) => res.json())
             .then(
                 ({ data }) => {
@@ -21,7 +23,7 @@ function useFetchActivities(userId) {
                     setError(error)
                 }
             )
-    }, [userId])
+    }, [id])
 
     if (errorActivities) {
         return <div>Erreur</div>
