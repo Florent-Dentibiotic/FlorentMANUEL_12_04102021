@@ -2,6 +2,12 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import UserSessionsMapper from '../mapper/UserSessionsMapper'
 
+/**
+ * Custom Hook to Fetch Sessions Data
+ * @param { number } id
+ * @return { SessionsData }
+ */
+
 function useFetchSessions(id) {
     const [errorSessions, setError] = useState(null)
     const [sessionsLoaded, setIsLoaded] = useState(false)

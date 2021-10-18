@@ -3,6 +3,12 @@ import { useState, useEffect } from 'react'
 import UserMapper from '../mapper/UserMapper'
 import UserKeyDataMapper from '../mapper/UserKeyDataMapper'
 
+/**
+ * Custom Hook to Fetch User & Key Data
+ * @param { number } id
+ * @return { UserData, KeyData }
+ */
+
 function useFetch(id) {
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)

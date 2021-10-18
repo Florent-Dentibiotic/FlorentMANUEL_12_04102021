@@ -2,6 +2,12 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import UserPerformanceMapper from '../mapper/UserPerformanceMapper'
 
+/**
+ * Custom Hook to Fetch Performance Data
+ * @param { number } id
+ * @return { Performances }
+ */
+
 function useFetchPerf(id) {
     const [errorPerf, setError] = useState(null)
     const [performanceLoaded, setIsLoaded] = useState(false)

@@ -1,7 +1,7 @@
-import calories from '../imgs/calories-icon.png'
-import protein from '../imgs/protein-icon.png'
-import carbs from '../imgs/carbs-icon.png'
-import fat from '../imgs/fat-icon.png'
+import calories from '../assets/calories-icon.png'
+import protein from '../assets/protein-icon.png'
+import carbs from '../assets/carbs-icon.png'
+import fat from '../assets/fat-icon.png'
 import useFetch from '../services/UserService'
 import { useParams } from 'react-router'
 

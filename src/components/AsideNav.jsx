@@ -1,8 +1,8 @@
 import '../index.css'
-import yoga from '../imgs/yoga.png'
-import swim from '../imgs/swim.png'
-import bike from '../imgs/bike.png'
-import dumbbell from '../imgs/dumbbell.png'
+import yoga from '../assets/yoga.png'
+import swim from '../assets/swim.png'
+import bike from '../assets/bike.png'
+import dumbbell from '../assets/dumbbell.png'
 
 function AsideNav() {
     return (

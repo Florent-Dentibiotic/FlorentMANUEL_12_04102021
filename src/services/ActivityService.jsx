@@ -2,6 +2,12 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import UserActivitiesMapper from '../mapper/UserActivitiesMapper'
 
+/**
+ * Custom Hook to Fetch Activities Data
+ * @param { number } id
+ * @return { Activities }
+ */
+
 function useFetchActivities(id) {
     const [errorActivities, setError] = useState(null)
     const [activitiesLoaded, setIsLoaded] = useState(false)
