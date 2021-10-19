@@ -13,7 +13,13 @@ function Dashboard() {
     const { id } = useParams()
     const { userData, isLoaded, error } = useFetch(id)
     if (error) {
-        return <Error />
+        return (
+            <>
+                <main className="flex h-screen">
+                    <Error />
+                </main>
+            </>
+        )
     } else {
         return (
             <>

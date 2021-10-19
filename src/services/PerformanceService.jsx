@@ -13,22 +13,42 @@ function useFetchPerf(id) {
     const [performanceLoaded, setIsLoaded] = useState(false)
     const [performanceData, setPerformanceData] = useState({})
 
+    // useEffect(() => {
+    //     fetch(`http://localhost:3000/user/${id}/performance`)
+    //         //** MOCK LINK **
+    //         //fetch(`../user/${id}/performance.json`)
+    //         .then((res) => res.json())
+    //         .then(
+    //             ({ data }) => {
+    //                 setPerformanceData(
+    //                     UserPerformanceMapper.convertToUserPerf(data)
+    //                 )
+    //                 setIsLoaded(true)
+    //             },
+    //             (error) => {
+    //                 setError(error)
+    //             }
+    //         )
+    // }, [id])
+
     useEffect(() => {
-        fetch(`http://localhost:3000/user/${id}/performance`)
-            //** MOCK LINK **
-            //fetch(`../user/${id}/performance.json`)
-            .then((res) => res.json())
-            .then(
-                ({ data }) => {
-                    setPerformanceData(
-                        UserPerformanceMapper.convertToUserPerf(data)
-                    )
-                    setIsLoaded(true)
-                },
-                (error) => {
-                    setError(error)
-                }
-            )
+        async function fetchUser() {
+            try {
+                const response = await fetch(
+                    `http://localhost:3000/user/${id}/performance`
+                )
+                const { data } = await response.json()
+                setPerformanceData(
+                    UserPerformanceMapper.convertToUserPerf(data)
+                )
+            } catch (err) {
+                console.log(err)
+                setError(true)
+            } finally {
+                setIsLoaded(true)
+            }
+        }
+        fetchUser()
     }, [id])
 
     if (errorPerf) {

@@ -4,11 +4,10 @@ import RadialBarChartD3 from '../D3/RadialBarChartD3'
 
 function RadialBarChart(data) {
     const { id } = useParams()
-    const { userData, isLoaded } = useFetch(id)
+    const { userData, isLoaded, error } = useFetch(id)
 
     return (
         <>
-            {isLoaded && <RadialBarChartD3 score={userData.score} />}
             <svg
                 className="score-box rounded bg-gray-50"
                 width="250"
@@ -45,6 +44,9 @@ function RadialBarChart(data) {
                 >
                     objectif
                 </text>
+                {!error & isLoaded && (
+                    <RadialBarChartD3 score={userData.score} />
+                )}
             </svg>
         </>
     )

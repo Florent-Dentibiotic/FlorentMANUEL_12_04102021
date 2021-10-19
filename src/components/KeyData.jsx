@@ -7,8 +7,8 @@ import { useParams } from 'react-router'
 
 function KeyData() {
     const { id } = useParams()
-    const { keyData, isLoaded } = useFetch(id)
-    if (isLoaded) {
+    const { keyData, isLoaded, error } = useFetch(id)
+    if (!error & isLoaded) {
         return (
             <>
                 <div className="bg-gray-50 rounded-md flex justify-around items-center">

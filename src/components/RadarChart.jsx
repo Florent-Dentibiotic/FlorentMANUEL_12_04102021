@@ -5,7 +5,7 @@ import * as d3 from 'd3'
 
 function RadarChart() {
     const { id } = useParams()
-    const { performanceData, performanceLoaded } = useFetchPerf(id)
+    const { performanceData, performanceLoaded, errorPerf } = useFetchPerf(id)
 
     /** Static Hexagons construction */
     function newHexagon(size) {
@@ -59,9 +59,6 @@ function RadarChart() {
 
     return (
         <>
-            {performanceLoaded && (
-                <RadarChartD3 perfs={performanceData.perfs} />
-            )}
             <svg
                 className="radar-box bg-black rounded"
                 width="250"
@@ -85,6 +82,9 @@ function RadarChart() {
                 <text x="5" y="90" fill="#fff" fontSize="12">
                     Cardio
                 </text>
+                {!errorPerf & performanceLoaded && (
+                    <RadarChartD3 perfs={performanceData.perfs} />
+                )}
             </svg>
         </>
     )

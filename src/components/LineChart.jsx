@@ -4,11 +4,10 @@ import { useParams } from 'react-router'
 
 function LineChart() {
     const { id } = useParams()
-    const { sessionsData, sessionsLoaded } = useFetchSessions(id)
+    const { sessionsData, sessionsLoaded, errorSessions } = useFetchSessions(id)
 
     return (
         <>
-            {sessionsLoaded && <LineChartD3 sessions={sessionsData.sessions} />}
             <svg
                 className="session-box bg-red-600 rounded"
                 width="250"
@@ -95,6 +94,9 @@ function LineChart() {
                 >
                     D
                 </text>
+                {!errorSessions & sessionsLoaded && (
+                    <LineChartD3 sessions={sessionsData.sessions} />
+                )}
             </svg>
         </>
     )

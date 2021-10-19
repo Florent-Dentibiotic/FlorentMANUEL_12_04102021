@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react'
 import UserSessionsMapper from '../mapper/UserSessionsMapper'
 
 /**
- * Custom Hook to Fetch Sessions Data
+ * Custom Hook to Fetch Sessions Duration Data
  * @param { number } id
- * @return { SessionsData }
+ * @return { SessionsDuration }
  */
 
 function useFetchSessions(id) {
@@ -13,20 +13,38 @@ function useFetchSessions(id) {
     const [sessionsLoaded, setIsLoaded] = useState(false)
     const [sessionsData, setsessionsData] = useState({})
 
+    // useEffect(() => {
+    //     fetch(`http://localhost:3000/user/${id}/average-sessions`)
+    //         //** MOCK LINK **
+    //         //fetch(`../user/${id}/average-sessions.json`)
+    //         .then((res) => res.json())
+    //         .then(
+    //             ({ data }) => {
+    //                 setsessionsData(UserSessionsMapper.convertToSession(data))
+    //                 setIsLoaded(true)
+    //             },
+    //             (error) => {
+    //                 setError(error)
+    //             }
+    //         )
+    // }, [id])
+
     useEffect(() => {
-        fetch(`http://localhost:3000/user/${id}/average-sessions`)
-            //** MOCK LINK **
-            //fetch(`../user/${id}/average-sessions.json`)
-            .then((res) => res.json())
-            .then(
-                ({ data }) => {
-                    setsessionsData(UserSessionsMapper.convertToSession(data))
-                    setIsLoaded(true)
-                },
-                (error) => {
-                    setError(error)
-                }
-            )
+        async function fetchUser() {
+            try {
+                const response = await fetch(
+                    `http://localhost:3000/user/${id}/average-sessions`
+                )
+                const { data } = await response.json()
+                setsessionsData(UserSessionsMapper.convertToSession(data))
+            } catch (err) {
+                console.log(err)
+                setError(true)
+            } finally {
+                setIsLoaded(true)
+            }
+        }
+        fetchUser()
     }, [id])
 
     if (errorSessions) {
