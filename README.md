@@ -10,7 +10,8 @@ The new dashboard is based on [React](https://reactjs.org/).
 
 -   [NodeJS](https://nodejs.org/en/)
 -   [Yarn](https://yarnpkg.com/)
-    If you need to install [NodeJS](https://nodejs.org/en/), I recommand [Homebrew](https://brew.sh/index_fr) if you are on MacOS and [Chocolatey](https://chocolatey.org) if you are on Windows.
+
+If you need to install [NodeJS](https://nodejs.org/en/), I recommand [Homebrew](https://brew.sh/index_fr) if you are on MacOS and [Chocolatey](https://chocolatey.org) if you are on Windows.
 
 ### `yarn start`
 
