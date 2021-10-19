@@ -2,6 +2,15 @@ import useFetchActivities from '../services/ActivityService'
 import { useParams } from 'react-router'
 import BarChartD3 from '../D3/BarChartD3'
 
+/**
+ * Setting up BarChart framework and initialising D3 if data loaded
+ * @param { number } id
+ * @param { activitiesData } object
+ * @param { activitiesLoaded } booleen
+ * @param { errorActivities } booleen
+ * @return { BarChart }
+ */
+
 function BarChart() {
     const { id } = useParams()
     const { activitiesData, activitiesLoaded, errorActivities } =

@@ -5,6 +5,15 @@ import fat from '../assets/fat-icon.png'
 import useFetch from '../services/UserService'
 import { useParams } from 'react-router'
 
+/**
+ * Setting up KeyData framework and deploying datas if loaded
+ * @param { number } id
+ * @param { keyData } object
+ * @param { isLoaded } booleen
+ * @param { error } booleen
+ * @return { KeyChart }
+ */
+
 function KeyData() {
     const { id } = useParams()
     const { keyData, isLoaded, error } = useFetch(id)

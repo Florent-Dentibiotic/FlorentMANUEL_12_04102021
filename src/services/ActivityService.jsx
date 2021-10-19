@@ -5,7 +5,7 @@ import UserActivitiesMapper from '../mapper/UserActivitiesMapper'
 /**
  * Custom Hook to Fetch Activities Data
  * @param { number } id
- * @return { Activities }
+ * @return { activitiesData, activitiesLoaded, errorActivities }
  */
 
 function useFetchActivities(id) {

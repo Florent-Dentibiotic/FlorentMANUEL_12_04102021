@@ -25,8 +25,8 @@ function useFetch(id) {
                 setUserData(UserMapper.convertToUser(data))
                 setKeyData(UserKeyDataMapper.convertToKeyData(data))
             } catch (err) {
-                console.log(err)
                 setError(true)
+                console.log(err)
             } finally {
                 setIsLoaded(true)
             }

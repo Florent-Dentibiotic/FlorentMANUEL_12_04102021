@@ -2,6 +2,15 @@ import useFetch from '../services/UserService'
 import { useParams } from 'react-router'
 import RadialBarChartD3 from '../D3/RadialBarChartD3'
 
+/**
+ * Setting up RadialBarChart framework and  initialising D3 if data loaded
+ * @param { number } id
+ * @param { userData } object
+ * @param { isLoaded } booleen
+ * @param { error } booleen
+ * @return { RadarChart }
+ */
+
 function RadialBarChart(data) {
     const { id } = useParams()
     const { userData, isLoaded, error } = useFetch(id)
