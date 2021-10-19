@@ -30,8 +30,8 @@ You can also use :
 
 The application was developped with :
 
--   [React](https://reactjs.org/),
--   [React Router](https://reactrouter.com),
--   [D3.JS](https://d3js.org),
+-   [React](https://reactjs.org/)
+-   [React Router](https://reactrouter.com)
+-   [D3.JS](https://d3js.org)
 -   [Tailwindcss](https://tailwindcss.com)
 -   [Prettier](https://prettier.io)
