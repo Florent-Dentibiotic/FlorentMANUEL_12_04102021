@@ -1,6 +1,10 @@
 <h1 align="center"><img src="https://github.com/Florent-Dentibiotic/FlorentMANUEL_12_04102021/blob/services/src/assets/logo-2.png"/></h1>
 
+<p>SportSee is an OpenClassRomm project. It's a startup dedicated to sports coaching witch wanted to renewal its user's dashboard.</p>
+
 # Getting Started with SportSee
+
+The new dashboard is based on [React](https://reactjs.org/)
 
 ## Available Scripts
 
