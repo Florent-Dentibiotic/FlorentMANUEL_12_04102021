@@ -1,14 +1,16 @@
 <h1 align="center"><img src="https://github.com/Florent-Dentibiotic/FlorentMANUEL_12_04102021/blob/services/src/assets/logo-2.png"/></h1>
 
-<p>SportSee is an OpenClassRomm project. It's a startup dedicated to sports coaching witch wanted to renewal its user's dashboard.</p>
+<p>SportSee is an OpenClassRoom project. It's a startup dedicated to sports coaching witch wanted to renewal its user's dashboard.</p>
 
-# Getting Started with SportSee
+## Getting Started with SportSee
 
-The new dashboard is based on [React](https://reactjs.org/)
+The new dashboard is based on [React](https://reactjs.org/).
 
-## Available Scripts
+### Prerequisites
 
-In the project directory, you can run:
+-   [NodeJS](https://nodejs.org/en/)
+-   [Yarn](https://yarnpkg.com/)
+    If you need to install [NodeJS](https://nodejs.org/en/), I recommand [Homebrew](https://brew.sh/index_fr) if you are on MacOS and [Chocolatey](https://chocolatey.org) if you are on Windows.
 
 ### `yarn start`
 
