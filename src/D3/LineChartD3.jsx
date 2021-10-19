@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 
 function LineChartD3({ sessions }) {
     useEffect(() => {
+        /** CONSTANTS AND LIMITS INITIALISATION */
+
         let x = d3.scaleLinear().domain([1, 7]).range([0, 250])
 
         let y = d3
@@ -13,6 +15,8 @@ function LineChartD3({ sessions }) {
                 d3.max(sessions, (d) => d.sessionLength),
             ])
             .range([100, 0])
+
+        /** LINE DRAWING */
 
         let valueLine = d3
             .line()
@@ -24,7 +28,10 @@ function LineChartD3({ sessions }) {
             })
             .curve(d3.curveBumpX)
 
-        const svg = d3.select('.session-box').style('border-radius', '5px')
+        /** SVG AND PATH DESIGN */
+
+        const svg = d3.select('.session-box')
+
         const path = svg
             .append('g')
             .attr('transform', 'translate(0, 100)')
@@ -35,11 +42,14 @@ function LineChartD3({ sessions }) {
             .attr('stroke-dasharray', 250)
             .attr('stroke-dashoffset', 250)
             .attr('d', valueLine(sessions))
+
         path.transition()
             .duration(600)
             .attr('stroke-dasharray', 0)
             .attr('stroke-dashoffset', 0)
-        /* MOUSE OVER ANIMATIONS */
+
+        /** MOUSE OVER ANIMATIONS */
+
         sessions.map((session, index) => {
             const animations = svg.append('g')
             animations

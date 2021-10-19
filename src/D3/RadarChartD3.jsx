@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 
 function RadarChartD3({ perfs }) {
     useEffect(() => {
+        /** CONSTANTS AND LIMITS INITIALISATION */
+
         const cardio = perfs.cardio
         const energy = perfs.energy
         const endurance = perfs.endurance
@@ -22,9 +24,13 @@ function RadarChartD3({ perfs }) {
             return b - a
         })
 
+        /** SCALLING */
+
         function resizeValue(size) {
             return (85 * size) / (maxValue[0] + 10)
         }
+
+        /** USER SKILLS COORDINATES */
 
         const cardioCoord = {
             axeX: 125 - Math.sin(Math.PI / 3) * resizeValue(cardio),
@@ -52,17 +58,7 @@ function RadarChartD3({ perfs }) {
             axeY: 130 - resizeValue(intensity),
         }
 
-        function newHexagon(size) {
-            return `M125 ${130 - size}, ${125 + Math.sin(Math.PI / 3) * size} ${
-                130 - Math.cos(Math.PI / 3) * size
-            }, ${125 + Math.sin(Math.PI / 3) * size} ${
-                130 + Math.cos(Math.PI / 3) * size
-            }, 125 ${130 + size}, ${125 - Math.sin(Math.PI / 3) * size} ${
-                130 + Math.cos(Math.PI / 3) * size
-            }, ${125 - Math.sin(Math.PI / 3) * size} ${
-                130 - Math.cos(Math.PI / 3) * size
-            }, 125 ${130 - size}`
-        }
+        /** HEXAGON CREATION FROM SKILLS */
 
         const dPath = `M${intensityCoord.axeX} ${intensityCoord.axeY}, ${speedCoord.axeX} ${speedCoord.axeY}, ${strengthCoord.axeX} ${strengthCoord.axeY}, ${enduranceCoord.axeX} ${enduranceCoord.axeY},${energyCoord.axeX} ${energyCoord.axeY}, ${cardioCoord.axeX} ${cardioCoord.axeY}Z`
 
@@ -71,7 +67,7 @@ function RadarChartD3({ perfs }) {
         svg.append('g')
             .append('path')
             .attr('fill', '#FF0101')
-            .attr('d', newHexagon(0))
+            .attr('d', 'M125 125,125 125, 125 125,125 125,125 125, 125 125Z')
             .transition()
             .duration(600)
             .attr('d', dPath)

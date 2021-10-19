@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 
 function BarChartD3({ data }) {
     useEffect(() => {
+        /** CONSTANTS AND LIMITS INITIALISATION */
+
         const minKilo = d3.min(data, (d) => d.kilogram)
         const maxKilo = d3.max(data, (d) => d.kilogram)
         const max = d3.max(data, (d) => d.calories)
@@ -24,13 +26,16 @@ function BarChartD3({ data }) {
             .domain([minKilo - 1, maxKilo + 1])
             .range([140, 0])
 
-        const svg = d3.select('svg')
+        /** BARCHART GRAPH - SIZE AND POSITION SETTINGS */
 
-        const graph = svg
+        const graph = d3
+            .select('svg')
             .append('g')
             .attr('width', 685)
             .attr('height', 160)
             .attr('transform', 'translate(50, 110)')
+
+        /** AXIS SETTINGS */
 
         const groupeX = graph.append('g').attr('transform', `translate(0, 139)`)
 
@@ -41,6 +46,53 @@ function BarChartD3({ data }) {
         const groupeXtop = graph.append('g')
 
         const groupeY = graph.append('g').attr('transform', `translate(700, 0)`)
+
+        let tickLabels = ['1', '2', '3', '4', '5', '6', '7']
+
+        const axeX = d3
+            .axisBottom(x)
+            .tickSize(0)
+            .tickFormat((d, i) => tickLabels[i])
+        const axeY = d3.axisRight(yKilo).tickSize(0).ticks(3)
+
+        groupeX.call(axeX).style('font-size', '14px')
+        groupeXtop.call(axeX)
+        groupeXmiddle.call(axeX)
+
+        groupeX
+            .select('.domain')
+            .attr('stroke', '#DEDEDE')
+            .attr('stroke-width', 1)
+
+        groupeXtop
+            .select('.domain')
+            .attr('stroke', '#DEDEDE')
+            .attr('stroke-width', 1)
+            .attr('stroke-dasharray', '2')
+
+        groupeXmiddle
+            .select('.domain')
+            .attr('stroke', '#DEDEDE')
+            .attr('stroke-width', 1)
+            .attr('stroke-dasharray', '2')
+
+        groupeX
+            .selectAll('.tick text')
+            .attr('transform', 'translate(0, 10)')
+            .attr('class', 'text-gray-500')
+
+        groupeXmiddle.selectAll('.tick text').attr('opacity', '0')
+        groupeXtop.selectAll('.tick text').attr('opacity', '0')
+
+        groupeY.call(axeY).style('font-size', '14px')
+
+        groupeY.select('.domain').attr('stroke-width', 0)
+        groupeY
+            .selectAll('.tick text')
+            .attr('transform', 'translate(20, 0)')
+            .attr('class', 'text-gray-500')
+
+        /** BARCHARTS */
 
         const groupKilo = graph
             .append('g')
@@ -109,51 +161,6 @@ function BarChartD3({ data }) {
             .attr('height', 5)
             .attr('fill', '#FBFBFB')
             .attr('transform', `translate(-20, 140)`)
-
-        let tickLabels = ['1', '2', '3', '4', '5', '6', '7']
-
-        const axeX = d3
-            .axisBottom(x)
-            .tickSize(0)
-            .tickFormat((d, i) => tickLabels[i])
-        const axeY = d3.axisRight(yKilo).tickSize(0).ticks(3)
-
-        groupeX.call(axeX).style('font-size', '14px')
-        groupeXtop.call(axeX)
-        groupeXmiddle.call(axeX)
-
-        groupeX
-            .select('.domain')
-            .attr('stroke', '#DEDEDE')
-            .attr('stroke-width', 1)
-
-        groupeXtop
-            .select('.domain')
-            .attr('stroke', '#DEDEDE')
-            .attr('stroke-width', 1)
-            .attr('stroke-dasharray', '2')
-
-        groupeXmiddle
-            .select('.domain')
-            .attr('stroke', '#DEDEDE')
-            .attr('stroke-width', 1)
-            .attr('stroke-dasharray', '2')
-
-        groupeX
-            .selectAll('.tick text')
-            .attr('transform', 'translate(0, 10)')
-            .attr('class', 'text-gray-500')
-
-        groupeXmiddle.selectAll('.tick text').attr('opacity', '0')
-        groupeXtop.selectAll('.tick text').attr('opacity', '0')
-
-        groupeY.call(axeY).style('font-size', '14px')
-
-        groupeY.select('.domain').attr('stroke-width', 0)
-        groupeY
-            .selectAll('.tick text')
-            .attr('transform', 'translate(20, 0)')
-            .attr('class', 'text-gray-500')
 
         /* MOUSE OVER ANIMATIONS */
 

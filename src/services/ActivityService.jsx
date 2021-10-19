@@ -13,30 +13,14 @@ function useFetchActivities(id) {
     const [activitiesLoaded, setIsLoaded] = useState(false)
     const [activitiesData, setActivitiesData] = useState({})
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:3000/user/${id}/activity`)
-    //         //** MOCK LINK **
-    //         //fetch(`../user/${id}/activity.json`)
-    //         .then((res) => res.json())
-    //         .then(
-    //             ({ data }) => {
-    //                 setActivitiesData(
-    //                     UserActivitiesMapper.convertToActivities(data)
-    //                 )
-    //                 setIsLoaded(true)
-    //             },
-    //             (error) => {
-    //                 setError(error)
-    //             }
-    //         )
-    // }, [id])
-
     useEffect(() => {
         async function fetchUser() {
             try {
                 const response = await fetch(
                     `http://localhost:3000/user/${id}/activity`
                 )
+                //** MOCK LINK **
+                //const response = await fetch(`../${id}/activity.json`)
                 const { data } = await response.json()
                 setActivitiesData(
                     UserActivitiesMapper.convertToActivities(data)

@@ -17,7 +17,7 @@ function RadarChart() {
             130 + Math.cos(Math.PI / 3) * size
         }, ${125 - Math.sin(Math.PI / 3) * size} ${
             130 - Math.cos(Math.PI / 3) * size
-        }, 125 ${130 - size}`
+        }, 125 ${130 - size}Z`
     }
 
     const svg = d3

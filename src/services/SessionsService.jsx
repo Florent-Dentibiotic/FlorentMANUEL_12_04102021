@@ -13,28 +13,14 @@ function useFetchSessions(id) {
     const [sessionsLoaded, setIsLoaded] = useState(false)
     const [sessionsData, setsessionsData] = useState({})
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:3000/user/${id}/average-sessions`)
-    //         //** MOCK LINK **
-    //         //fetch(`../user/${id}/average-sessions.json`)
-    //         .then((res) => res.json())
-    //         .then(
-    //             ({ data }) => {
-    //                 setsessionsData(UserSessionsMapper.convertToSession(data))
-    //                 setIsLoaded(true)
-    //             },
-    //             (error) => {
-    //                 setError(error)
-    //             }
-    //         )
-    // }, [id])
-
     useEffect(() => {
         async function fetchUser() {
             try {
                 const response = await fetch(
                     `http://localhost:3000/user/${id}/average-sessions`
                 )
+                //** MOCK LINK **
+                //const response = await fetch(`../${id}/average-sessions.json`)
                 const { data } = await response.json()
                 setsessionsData(UserSessionsMapper.convertToSession(data))
             } catch (err) {

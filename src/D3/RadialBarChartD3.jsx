@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 
 function RadialBarChartD3({ score }) {
     useEffect(() => {
+        /** ARC CREATION BY USER SCORE */
+
         const svg = d3.select('.score-box')
 
         const arc = d3
