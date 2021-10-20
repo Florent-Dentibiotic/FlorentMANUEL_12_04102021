@@ -18,7 +18,12 @@ function BarChart() {
 
     return (
         <>
-            <svg className="bg-gray-50 rounded" width="825" height="320">
+            <svg
+                className="bg-gray-50 rounded"
+                width="825"
+                height="320"
+                viewBox="0 0 825 320"
+            >
                 <text x="32" y="50" fill="#20253A" fontSize="15">
                     Activité quotidienne
                 </text>

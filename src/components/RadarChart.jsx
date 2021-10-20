@@ -72,20 +72,21 @@ function RadarChart() {
                 className="radar-box bg-black rounded"
                 width="250"
                 height="250"
+                viewBox="0 0 250 250"
             >
-                <text x="100" y="30" fill="#fff" fontSize="12">
+                <text x="100" y="35" fill="#fff" fontSize="12">
                     Intensité
                 </text>
-                <text x="210" y="90" fill="#fff" fontSize="12">
+                <text x="205" y="90" fill="#fff" fontSize="12">
                     Vitesse
                 </text>
-                <text x="210" y="170" fill="#fff" fontSize="12">
+                <text x="205" y="175" fill="#fff" fontSize="12">
                     Force
                 </text>
                 <text x="100" y="230" fill="#fff" fontSize="12">
                     Endurance
                 </text>
-                <text x="5" y="170" fill="#fff" fontSize="12">
+                <text x="5" y="175" fill="#fff" fontSize="12">
                     Energie
                 </text>
                 <text x="5" y="90" fill="#fff" fontSize="12">

@@ -21,6 +21,7 @@ function RadialBarChart(data) {
                 className="score-box rounded bg-gray-50"
                 width="250"
                 height="250"
+                viewBox="0 0 250 250"
             >
                 <circle cx="125" cy="125" r="87" fill="white"></circle>
                 <text x="32" y="35" fill="#20253A" fontSize="15">
