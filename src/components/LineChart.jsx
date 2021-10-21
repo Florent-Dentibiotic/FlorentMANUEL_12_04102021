@@ -4,10 +4,7 @@ import { useParams } from 'react-router'
 
 /**
  * Setting up LineChart framework and  initialising D3 if data loaded
- * @param { number } id
- * @param { sessionsData } object
- * @param { sessionsLoaded } booleen
- * @param { errorSessions } booleen
+ *
  * @return { LineChart }
  */
 

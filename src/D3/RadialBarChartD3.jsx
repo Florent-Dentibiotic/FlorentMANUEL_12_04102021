@@ -2,6 +2,13 @@ import * as d3 from 'd3'
 import { useEffect } from 'react/cjs/react.development'
 import PropTypes from 'prop-types'
 
+/**
+ * D3.JS RadialBarChart from user datas
+ *
+ * @param { number } score
+ * @returns { <RadialBarChartD3 />}
+ */
+
 function RadialBarChartD3({ score }) {
     useEffect(() => {
         /** ARC CREATION BY USER SCORE */

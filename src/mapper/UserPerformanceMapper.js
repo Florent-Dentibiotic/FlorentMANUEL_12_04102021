@@ -1,6 +1,12 @@
 import UserPerformanceData from '../core/UserPerformanceData'
 
 export default class UserPerformanceMapper {
+    /**
+     * Convert received Json to new UserPerformance type
+     *
+     * @param { object } json
+     * @returns { new UserPerformanceData }
+     */
     static convertToUserPerf(json) {
         return new UserPerformanceData(json.userId, {
             cardio: json.data[0].value,

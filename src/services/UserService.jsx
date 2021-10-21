@@ -1,12 +1,12 @@
-import React from 'react'
 import { useState, useEffect } from 'react'
 import UserMapper from '../mapper/UserMapper'
 import UserKeyDataMapper from '../mapper/UserKeyDataMapper'
 
 /**
  * Custom Hook to Fetch User & Key Data
+ *
  * @param { number } id
- * @return { UserData, KeyData }
+ * @return { UserData, KeyData, isLoaded, error }
  */
 
 function useFetch(id) {
@@ -25,7 +25,7 @@ function useFetch(id) {
                 setUserData(UserMapper.convertToUser(data))
                 setKeyData(UserKeyDataMapper.convertToKeyData(data))
             } catch (err) {
-                setError(true)
+                setError(err)
                 console.log(err)
             } finally {
                 setIsLoaded(true)
@@ -34,17 +34,11 @@ function useFetch(id) {
         fetchUser()
     }, [id])
 
-    if (error) {
-        return <div>Erreur</div>
-    } else if (!isLoaded) {
-        return <div>Chargement...</div>
-    } else {
-        return {
-            userData,
-            keyData,
-            isLoaded,
-            error,
-        }
+    return {
+        userData,
+        keyData,
+        isLoaded,
+        error,
     }
 }
 

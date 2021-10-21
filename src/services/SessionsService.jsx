@@ -4,8 +4,9 @@ import UserSessionsMapper from '../mapper/UserSessionsMapper'
 
 /**
  * Custom Hook to Fetch Sessions Duration Data
+ *
  * @param { number } id
- * @return { SessionsDuration }
+ * @return { SessionsDuration, sessionsLoaded, errorSessions }
  */
 
 function useFetchSessions(id) {

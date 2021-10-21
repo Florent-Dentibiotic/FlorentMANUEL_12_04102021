@@ -2,6 +2,13 @@ import * as d3 from 'd3'
 import { useEffect } from 'react/cjs/react.development'
 import PropTypes from 'prop-types'
 
+/**
+ * D3.JS RadarChart from user datas
+ *
+ * @param { object } perfs
+ * @returns { <RadarChartD3 />}
+ */
+
 function RadarChartD3({ perfs }) {
     useEffect(() => {
         /** CONSTANTS AND LIMITS INITIALISATION */

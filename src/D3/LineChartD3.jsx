@@ -2,6 +2,13 @@ import * as d3 from 'd3'
 import { useEffect } from 'react/cjs/react.development'
 import PropTypes from 'prop-types'
 
+/**
+ * D3.JS LineChart from user datas
+ *
+ * @param { array } sessions
+ * @returns { <LineChartD3 />}
+ */
+
 function LineChartD3({ sessions }) {
     useEffect(() => {
         /** CONSTANTS AND LIMITS INITIALISATION */

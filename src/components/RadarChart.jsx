@@ -5,10 +5,7 @@ import * as d3 from 'd3'
 
 /**
  * Setting up RadarChart framework and  initialising D3 if data loaded
- * @param { number } id
- * @param { performanceData } object
- * @param { performanceLoaded } booleen
- * @param { errorPerf } booleen
+ *
  * @return { RadarChart }
  */
 

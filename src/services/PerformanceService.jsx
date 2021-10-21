@@ -4,8 +4,9 @@ import UserPerformanceMapper from '../mapper/UserPerformanceMapper'
 
 /**
  * Custom Hook to Fetch Performance Data
+ *
  * @param { number } id
- * @return { Performances }
+ * @return { Performances, performanceLoaded, errorPerf }
  */
 
 function useFetchPerf(id) {

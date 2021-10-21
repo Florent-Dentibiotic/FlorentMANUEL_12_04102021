@@ -2,6 +2,13 @@ import * as d3 from 'd3'
 import { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
+/**
+ * D3.JS BarChart from user datas
+ *
+ * @param { object } data
+ * @returns { <BarChartD3 />}
+ */
+
 function BarChartD3({ data }) {
     useEffect(() => {
         /** CONSTANTS AND LIMITS INITIALISATION */
