@@ -25,6 +25,7 @@ function Home() {
                         name="userId"
                         className="px-3 py-1"
                         onChange={(e) => setUser(e.target.value)}
+                        placeholder="user12"
                     />
                     <button
                         type="submit"
