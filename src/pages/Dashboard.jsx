@@ -10,7 +10,7 @@ import { useParams } from 'react-router'
 
 function Dashboard() {
     const { id } = useParams()
-    const { userData, isLoaded, error } = useFetch(id)
+    const { userData, isLoaded } = useFetch(id)
 
     return (
         <>
@@ -22,7 +22,6 @@ function Dashboard() {
                             Bonjour{' '}
                             <span className="text-red-600">
                                 {isLoaded && userData.firstName}{' '}
-                                {error && error.message}
                             </span>
                         </h1>
                         {isLoaded && (
