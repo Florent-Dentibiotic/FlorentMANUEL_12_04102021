@@ -8,6 +8,7 @@ The new dashboard is based on [React](https://reactjs.org/).
 
 ### Prerequisites
 
+-   Un éditeur de code tel que [VSCode](https://code.visualstudio.com/download), [VSCodium](https://vscodium.com) ou encore [SublimeText](https://www.sublimetext.com/download).
 -   [NodeJS](https://nodejs.org/en/). If you need to install [NodeJS](https://nodejs.org/en/), I recommand [Homebrew](https://brew.sh/index_fr) if you are on MacOS and [Chocolatey](https://chocolatey.org) if you are on Windows.
 
 You can also use :
