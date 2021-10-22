@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState, useEffect } from 'react'
 import UserPerformanceMapper from '../mapper/UserPerformanceMapper'
 
@@ -36,16 +35,10 @@ function useFetchPerf(id) {
         fetchUser()
     }, [id])
 
-    if (errorPerf) {
-        return <div>Erreur</div>
-    } else if (!performanceLoaded) {
-        return <div>Chargement...</div>
-    } else {
-        return {
-            performanceData,
-            performanceLoaded,
-            errorPerf,
-        }
+    return {
+        performanceData,
+        performanceLoaded,
+        errorPerf,
     }
 }
 

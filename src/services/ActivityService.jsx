@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState, useEffect } from 'react'
 import UserActivitiesMapper from '../mapper/UserActivitiesMapper'
 
@@ -36,16 +35,10 @@ function useFetchActivities(id) {
         fetchUser()
     }, [id])
 
-    if (errorActivities) {
-        return <div>Erreur</div>
-    } else if (!activitiesLoaded) {
-        return <div>Chargement...</div>
-    } else {
-        return {
-            activitiesData,
-            activitiesLoaded,
-            errorActivities,
-        }
+    return {
+        activitiesData,
+        activitiesLoaded,
+        errorActivities,
     }
 }
 

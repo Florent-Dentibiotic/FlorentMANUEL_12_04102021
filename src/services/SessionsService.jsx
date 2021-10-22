@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState, useEffect } from 'react'
 import UserSessionsMapper from '../mapper/UserSessionsMapper'
 
@@ -34,16 +33,10 @@ function useFetchSessions(id) {
         fetchUser()
     }, [id])
 
-    if (errorSessions) {
-        return <div>Erreur</div>
-    } else if (!sessionsLoaded) {
-        return <div>Chargement...</div>
-    } else {
-        return {
-            sessionsData,
-            sessionsLoaded,
-            errorSessions,
-        }
+    return {
+        sessionsData,
+        sessionsLoaded,
+        errorSessions,
     }
 }
 
