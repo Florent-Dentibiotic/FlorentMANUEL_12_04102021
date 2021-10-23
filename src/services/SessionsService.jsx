@@ -8,7 +8,7 @@ import UserSessionsMapper from '../mapper/UserSessionsMapper'
  * @return { SessionsDuration, sessionsLoaded, errorSessions }
  */
 
-function useFetchSessions(id) {
+export default function useFetchSessions(id) {
     const [errorSessions, setError] = useState(null)
     const [sessionsLoaded, setIsLoaded] = useState(false)
     const [sessionsData, setsessionsData] = useState({})
@@ -39,5 +39,3 @@ function useFetchSessions(id) {
         errorSessions,
     }
 }
-
-export default useFetchSessions

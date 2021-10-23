@@ -8,7 +8,7 @@ import UserActivitiesMapper from '../mapper/UserActivitiesMapper'
  * @return { activitiesData, activitiesLoaded, errorActivities }
  */
 
-function useFetchActivities(id) {
+export default function useFetchActivities(id) {
     const [errorActivities, setError] = useState(null)
     const [activitiesLoaded, setIsLoaded] = useState(false)
     const [activitiesData, setActivitiesData] = useState({})
@@ -41,5 +41,3 @@ function useFetchActivities(id) {
         errorActivities,
     }
 }
-
-export default useFetchActivities

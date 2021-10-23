@@ -9,7 +9,7 @@ import UserKeyDataMapper from '../mapper/UserKeyDataMapper'
  * @return { UserData, KeyData, isLoaded, error }
  */
 
-function useFetch(id) {
+export default function useFetch(id) {
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
     const [userData, setUserData] = useState({})
@@ -41,5 +41,3 @@ function useFetch(id) {
         error,
     }
 }
-
-export default useFetch

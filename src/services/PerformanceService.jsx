@@ -8,7 +8,7 @@ import UserPerformanceMapper from '../mapper/UserPerformanceMapper'
  * @return { Performances, performanceLoaded, errorPerf }
  */
 
-function useFetchPerf(id) {
+export default function useFetchPerf(id) {
     const [errorPerf, setError] = useState(null)
     const [performanceLoaded, setIsLoaded] = useState(false)
     const [performanceData, setPerformanceData] = useState({})
@@ -41,5 +41,3 @@ function useFetchPerf(id) {
         errorPerf,
     }
 }
-
-export default useFetchPerf
