@@ -16,11 +16,11 @@ function useFetchPerf(id) {
     useEffect(() => {
         async function fetchUser() {
             try {
-                const response = await fetch(
-                    `http://localhost:3000/user/${id}/performance`
-                )
+                // const response = await fetch(
+                //     `http://localhost:3000/user/${id}/performance`
+                // )
                 //** MOCK LINK **
-                //const response = await fetch(`../${id}/performance.json`)
+                const response = await fetch(`../${id}/performance.json`)
                 const { data } = await response.json()
                 setPerformanceData(
                     UserPerformanceMapper.convertToUserPerf(data)

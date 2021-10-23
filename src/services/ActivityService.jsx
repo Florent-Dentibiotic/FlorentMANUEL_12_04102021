@@ -16,11 +16,11 @@ function useFetchActivities(id) {
     useEffect(() => {
         async function fetchUser() {
             try {
-                const response = await fetch(
-                    `http://localhost:3000/user/${id}/activity`
-                )
+                // const response = await fetch(
+                //     `http://localhost:3000/user/${id}/activity`
+                // )
                 //** MOCK LINK **
-                //const response = await fetch(`../${id}/activity.json`)
+                const response = await fetch(`../${id}/activity.json`)
                 const { data } = await response.json()
                 setActivitiesData(
                     UserActivitiesMapper.convertToActivities(data)

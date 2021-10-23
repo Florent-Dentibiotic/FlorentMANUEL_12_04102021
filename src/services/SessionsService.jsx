@@ -16,11 +16,11 @@ function useFetchSessions(id) {
     useEffect(() => {
         async function fetchUser() {
             try {
-                const response = await fetch(
-                    `http://localhost:3000/user/${id}/average-sessions`
-                )
+                // const response = await fetch(
+                //     `http://localhost:3000/user/${id}/average-sessions`
+                // )
                 //** MOCK LINK **
-                //const response = await fetch(`../${id}/average-sessions.json`)
+                const response = await fetch(`../${id}/average-sessions.json`)
                 const { data } = await response.json()
                 setsessionsData(UserSessionsMapper.convertToSession(data))
             } catch (err) {
