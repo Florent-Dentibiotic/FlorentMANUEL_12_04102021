@@ -1,4 +1,4 @@
-import RadialBarChart from '../components/RadialBarChart'
+import RadialBarChart from '../components/RadialBarChart';
 
 function DevTodayScore() {
     return (
@@ -7,7 +7,7 @@ function DevTodayScore() {
                 <RadialBarChart />
             </main>
         </>
-    )
+    );
 }
 
-export default DevTodayScore
+export default DevTodayScore;

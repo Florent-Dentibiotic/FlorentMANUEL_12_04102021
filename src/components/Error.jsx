@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 function Error({ detail }) {
     return (
@@ -15,7 +15,7 @@ function Error({ detail }) {
                 </Link>
             </div>
         </>
-    )
+    );
 }
 
-export default Error
+export default Error;

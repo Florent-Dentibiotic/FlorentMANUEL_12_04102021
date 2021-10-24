@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import UserActivitiesMapper from '../mapper/UserActivitiesMapper'
+import { useState, useEffect } from 'react';
+import UserActivitiesMapper from '../mapper/UserActivitiesMapper';
 
 /**
  * Custom Hook to Fetch Activities Data
@@ -9,9 +9,9 @@ import UserActivitiesMapper from '../mapper/UserActivitiesMapper'
  */
 
 export default function useFetchActivities(id) {
-    const [errorActivities, setError] = useState(null)
-    const [activitiesLoaded, setIsLoaded] = useState(false)
-    const [activitiesData, setActivitiesData] = useState({})
+    const [errorActivities, setError] = useState(null);
+    const [activitiesLoaded, setIsLoaded] = useState(false);
+    const [activitiesData, setActivitiesData] = useState({});
 
     useEffect(() => {
         async function fetchUser() {
@@ -20,24 +20,24 @@ export default function useFetchActivities(id) {
                 //     `http://localhost:3000/user/${id}/activity`
                 // )
                 //** MOCK LINK **
-                const response = await fetch(`../${id}/activity.json`)
-                const { data } = await response.json()
+                const response = await fetch(`../${id}/activity.json`);
+                const { data } = await response.json();
                 setActivitiesData(
                     UserActivitiesMapper.convertToActivities(data)
-                )
+                );
             } catch (err) {
-                console.log(err)
-                setError(true)
+                console.log(err);
+                setError(true);
             } finally {
-                setIsLoaded(true)
+                setIsLoaded(true);
             }
         }
-        fetchUser()
-    }, [id])
+        fetchUser();
+    }, [id]);
 
     return {
         activitiesData,
         activitiesLoaded,
         errorActivities,
-    }
+    };
 }

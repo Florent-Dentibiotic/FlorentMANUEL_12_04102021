@@ -1,4 +1,4 @@
-import UserSessionsData from '../core/UserSessionsData'
+import UserSessionsData from '../core/UserSessionsData';
 
 export default class UserSessionMapper {
     /**
@@ -8,6 +8,6 @@ export default class UserSessionMapper {
      * @returns { new UserSessionsData }
      */
     static convertToSession(json) {
-        return new UserSessionsData(json.userId, json.sessions)
+        return new UserSessionsData(json.userId, json.sessions);
     }
 }

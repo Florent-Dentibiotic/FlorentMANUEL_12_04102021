@@ -1,4 +1,4 @@
-import User from '../core/User'
+import User from '../core/User';
 
 export default class UserMapper {
     /**
@@ -14,6 +14,6 @@ export default class UserMapper {
             json.userInfos.lastName,
             json.userInfos.age,
             json.todayScore
-        )
+        );
     }
 }

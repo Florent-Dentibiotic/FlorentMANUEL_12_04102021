@@ -1,4 +1,4 @@
-import LineChart from '../components/LineChart'
+import LineChart from '../components/LineChart';
 
 function DevActivities() {
     return (
@@ -7,7 +7,7 @@ function DevActivities() {
                 <LineChart />
             </main>
         </>
-    )
+    );
 }
 
-export default DevActivities
+export default DevActivities;

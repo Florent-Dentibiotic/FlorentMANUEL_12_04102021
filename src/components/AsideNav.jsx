@@ -1,8 +1,8 @@
-import '../index.css'
-import yoga from '../assets/yoga.png'
-import swim from '../assets/swim.png'
-import bike from '../assets/bike.png'
-import dumbbell from '../assets/dumbbell.png'
+import '../index.css';
+import yoga from '../assets/yoga.png';
+import swim from '../assets/swim.png';
+import bike from '../assets/bike.png';
+import dumbbell from '../assets/dumbbell.png';
 
 function AsideNav() {
     return (
@@ -33,7 +33,7 @@ function AsideNav() {
                 </div>
             </aside>
         </>
-    )
+    );
 }
 
-export default AsideNav
+export default AsideNav;

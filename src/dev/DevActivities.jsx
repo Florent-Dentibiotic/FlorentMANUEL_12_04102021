@@ -1,4 +1,4 @@
-import RadarChart from '../components/RadarChart'
+import RadarChart from '../components/RadarChart';
 
 function DevActivities() {
     return (
@@ -7,7 +7,7 @@ function DevActivities() {
                 <RadarChart />
             </main>
         </>
-    )
+    );
 }
 
-export default DevActivities
+export default DevActivities;

@@ -1,6 +1,6 @@
-import * as d3 from 'd3'
-import { useEffect } from 'react/cjs/react.development'
-import PropTypes from 'prop-types'
+import * as d3 from 'd3';
+import { useEffect } from 'react/cjs/react.development';
+import PropTypes from 'prop-types';
 
 /**
  * D3.JS RadialBarChart from user datas
@@ -13,7 +13,7 @@ function RadialBarChartD3({ score }) {
     useEffect(() => {
         /** ARC CREATION BY USER SCORE */
 
-        const svg = d3.select('.score-box')
+        const svg = d3.select('.score-box');
 
         const arc = d3
             .arc()
@@ -21,7 +21,7 @@ function RadialBarChartD3({ score }) {
             .outerRadius(92)
             .startAngle(0)
             .endAngle(-Math.PI * 2 * score)
-            .cornerRadius(5)
+            .cornerRadius(5);
 
         svg.append('path')
             .attr('class', 'arc')
@@ -29,14 +29,14 @@ function RadialBarChartD3({ score }) {
             .attr('transform', 'translate(125, 125)')
             .attr('d', arc)
             .transition()
-            .duration(600)
-    }, [score])
+            .duration(600);
+    }, [score]);
 
-    return <> </>
+    return <> </>;
 }
 
-export default RadialBarChartD3
+export default RadialBarChartD3;
 
 RadialBarChartD3.propTypes = {
     perfs: PropTypes.number,
-}
+};

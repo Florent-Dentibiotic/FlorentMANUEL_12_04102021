@@ -9,10 +9,10 @@ export default class User {
      * @param { number } score
      */
     constructor(id, firstName, lastName, age, score) {
-        this.userId = id
-        this.firstName = firstName
-        this.lastName = lastName
-        this.age = age
-        this.score = score
+        this.userId = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.score = score;
     }
 }

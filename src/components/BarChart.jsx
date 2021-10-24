@@ -1,6 +1,6 @@
-import useFetchActivities from '../services/ActivityService'
-import { useParams } from 'react-router'
-import BarChartD3 from '../D3/BarChartD3'
+import useFetchActivities from '../services/ActivityService';
+import { useParams } from 'react-router';
+import BarChartD3 from '../D3/BarChartD3';
 
 /**
  * Setting up BarChart framework and initialising D3 if data loaded
@@ -9,9 +9,9 @@ import BarChartD3 from '../D3/BarChartD3'
  */
 
 function BarChart() {
-    const { id } = useParams()
+    const { id } = useParams();
     const { activitiesData, activitiesLoaded, errorActivities } =
-        useFetchActivities(id)
+        useFetchActivities(id);
 
     return (
         <>
@@ -37,7 +37,7 @@ function BarChart() {
                 )}
             </svg>
         </>
-    )
+    );
 }
 
-export default BarChart
+export default BarChart;

@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import UserSessionsMapper from '../mapper/UserSessionsMapper'
+import { useState, useEffect } from 'react';
+import UserSessionsMapper from '../mapper/UserSessionsMapper';
 
 /**
  * Custom Hook to Fetch Sessions Duration Data
@@ -9,9 +9,9 @@ import UserSessionsMapper from '../mapper/UserSessionsMapper'
  */
 
 export default function useFetchSessions(id) {
-    const [errorSessions, setError] = useState(null)
-    const [sessionsLoaded, setIsLoaded] = useState(false)
-    const [sessionsData, setsessionsData] = useState({})
+    const [errorSessions, setError] = useState(null);
+    const [sessionsLoaded, setIsLoaded] = useState(false);
+    const [sessionsData, setsessionsData] = useState({});
 
     useEffect(() => {
         async function fetchUser() {
@@ -20,22 +20,22 @@ export default function useFetchSessions(id) {
                 //     `http://localhost:3000/user/${id}/average-sessions`
                 // )
                 //** MOCK LINK **
-                const response = await fetch(`../${id}/average-sessions.json`)
-                const { data } = await response.json()
-                setsessionsData(UserSessionsMapper.convertToSession(data))
+                const response = await fetch(`../${id}/average-sessions.json`);
+                const { data } = await response.json();
+                setsessionsData(UserSessionsMapper.convertToSession(data));
             } catch (err) {
-                console.log(err)
-                setError(true)
+                console.log(err);
+                setError(true);
             } finally {
-                setIsLoaded(true)
+                setIsLoaded(true);
             }
         }
-        fetchUser()
-    }, [id])
+        fetchUser();
+    }, [id]);
 
     return {
         sessionsData,
         sessionsLoaded,
         errorSessions,
-    }
+    };
 }

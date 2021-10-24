@@ -1,9 +1,9 @@
-import calories from '../assets/calories-icon.png'
-import protein from '../assets/protein-icon.png'
-import carbs from '../assets/carbs-icon.png'
-import fat from '../assets/fat-icon.png'
-import useFetch from '../services/UserService'
-import { useParams } from 'react-router'
+import calories from '../assets/calories-icon.png';
+import protein from '../assets/protein-icon.png';
+import carbs from '../assets/carbs-icon.png';
+import fat from '../assets/fat-icon.png';
+import useFetch from '../services/UserService';
+import { useParams } from 'react-router';
 
 /**
  * Setting up KeyData framework and deploying datas if loaded
@@ -12,8 +12,8 @@ import { useParams } from 'react-router'
  */
 
 function KeyData() {
-    const { id } = useParams()
-    const { keyData, isLoaded, error } = useFetch(id)
+    const { id } = useParams();
+    const { keyData, isLoaded, error } = useFetch(id);
     if (!error & isLoaded) {
         return (
             <>
@@ -54,7 +54,7 @@ function KeyData() {
                     </div>
                 </div>
             </>
-        )
+        );
     } else {
         return (
             <>
@@ -87,8 +87,8 @@ function KeyData() {
                     </div>
                 </div>
             </>
-        )
+        );
     }
 }
 
-export default KeyData
+export default KeyData;

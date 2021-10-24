@@ -1,4 +1,4 @@
-import UserActivitiesData from '../core/UserActivitiesData'
+import UserActivitiesData from '../core/UserActivitiesData';
 
 export default class UserActivitiesMapper {
     /**
@@ -8,6 +8,6 @@ export default class UserActivitiesMapper {
      * @returns { new UserActivitiesData }
      */
     static convertToActivities(json) {
-        return new UserActivitiesData(json.userId, json.sessions)
+        return new UserActivitiesData(json.userId, json.sessions);
     }
 }

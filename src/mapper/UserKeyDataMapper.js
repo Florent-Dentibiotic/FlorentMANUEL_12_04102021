@@ -1,4 +1,4 @@
-import UserKeyData from '../core/UserKeyData'
+import UserKeyData from '../core/UserKeyData';
 
 export default class UserKeyDataMapper {
     /**
@@ -14,6 +14,6 @@ export default class UserKeyDataMapper {
             json.keyData.proteinCount,
             json.keyData.carbohydrateCount,
             json.keyData.lipidCount
-        )
+        );
     }
 }

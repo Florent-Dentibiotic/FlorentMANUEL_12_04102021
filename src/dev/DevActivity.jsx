@@ -1,4 +1,4 @@
-import BarChart from '../components/BarChart'
+import BarChart from '../components/BarChart';
 
 function DevActivity() {
     return (
@@ -7,7 +7,7 @@ function DevActivity() {
                 <BarChart />
             </main>
         </>
-    )
+    );
 }
 
-export default DevActivity
+export default DevActivity;

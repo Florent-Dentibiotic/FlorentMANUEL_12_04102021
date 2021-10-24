@@ -1,16 +1,16 @@
-import { useState } from 'react'
-import { Redirect } from 'react-router-dom'
-import '../index.css'
+import { useState } from 'react';
+import { Redirect } from 'react-router-dom';
+import '../index.css';
 
 function Home() {
-    const [user, setUser] = useState('')
-    const [toDashboard, setToDashboard] = useState(false)
+    const [user, setUser] = useState('');
+    const [toDashboard, setToDashboard] = useState(false);
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-        e.stopPropagation()
-        setToDashboard(true)
-    }
+        e.preventDefault();
+        e.stopPropagation();
+        setToDashboard(true);
+    };
 
     return (
         <>
@@ -39,7 +39,7 @@ function Home() {
                 </form>
             </main>
         </>
-    )
+    );
 }
 
-export default Home
+export default Home;

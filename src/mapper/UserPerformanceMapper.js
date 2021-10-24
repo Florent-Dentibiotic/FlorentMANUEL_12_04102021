@@ -1,4 +1,4 @@
-import UserPerformanceData from '../core/UserPerformanceData'
+import UserPerformanceData from '../core/UserPerformanceData';
 
 export default class UserPerformanceMapper {
     /**
@@ -15,6 +15,6 @@ export default class UserPerformanceMapper {
             strength: json.data[3].value,
             speed: json.data[4].value,
             intensity: json.data[5].value,
-        })
+        });
     }
 }

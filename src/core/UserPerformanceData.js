@@ -6,7 +6,7 @@ export default class UserPerformanceData {
      * @param { array } perfs
      */
     constructor(id, perfs) {
-        this.userId = id
-        this.perfs = perfs
+        this.userId = id;
+        this.perfs = perfs;
     }
 }

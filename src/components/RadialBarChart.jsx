@@ -1,6 +1,6 @@
-import useFetch from '../services/UserService'
-import { useParams } from 'react-router'
-import RadialBarChartD3 from '../D3/RadialBarChartD3'
+import useFetch from '../services/UserService';
+import { useParams } from 'react-router';
+import RadialBarChartD3 from '../D3/RadialBarChartD3';
 
 /**
  * Setting up RadialBarChart framework and  initialising D3 if data loaded
@@ -9,8 +9,8 @@ import RadialBarChartD3 from '../D3/RadialBarChartD3'
  */
 
 function RadialBarChart(data) {
-    const { id } = useParams()
-    const { userData, isLoaded, error } = useFetch(id)
+    const { id } = useParams();
+    const { userData, isLoaded, error } = useFetch(id);
 
     return (
         <>
@@ -56,7 +56,7 @@ function RadialBarChart(data) {
                 )}
             </svg>
         </>
-    )
+    );
 }
 
-export default RadialBarChart
+export default RadialBarChart;

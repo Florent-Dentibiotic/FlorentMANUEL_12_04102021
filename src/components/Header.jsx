@@ -1,6 +1,6 @@
-import '../index.css'
-import logo from '../assets/logo-2.png'
-import { Link } from 'react-router-dom'
+import '../index.css';
+import logo from '../assets/logo-2.png';
+import { Link } from 'react-router-dom';
 
 function Header() {
     return (
@@ -19,7 +19,7 @@ function Header() {
                 </ul>
             </header>
         </>
-    )
+    );
 }
 
-export default Header
+export default Header;

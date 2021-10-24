@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import UserPerformanceMapper from '../mapper/UserPerformanceMapper'
+import { useState, useEffect } from 'react';
+import UserPerformanceMapper from '../mapper/UserPerformanceMapper';
 
 /**
  * Custom Hook to Fetch Performance Data
@@ -9,9 +9,9 @@ import UserPerformanceMapper from '../mapper/UserPerformanceMapper'
  */
 
 export default function useFetchPerf(id) {
-    const [errorPerf, setError] = useState(null)
-    const [performanceLoaded, setIsLoaded] = useState(false)
-    const [performanceData, setPerformanceData] = useState({})
+    const [errorPerf, setError] = useState(null);
+    const [performanceLoaded, setIsLoaded] = useState(false);
+    const [performanceData, setPerformanceData] = useState({});
 
     useEffect(() => {
         async function fetchUser() {
@@ -20,24 +20,24 @@ export default function useFetchPerf(id) {
                 //     `http://localhost:3000/user/${id}/performance`
                 // )
                 //** MOCK LINK **
-                const response = await fetch(`../${id}/performance.json`)
-                const { data } = await response.json()
+                const response = await fetch(`../${id}/performance.json`);
+                const { data } = await response.json();
                 setPerformanceData(
                     UserPerformanceMapper.convertToUserPerf(data)
-                )
+                );
             } catch (err) {
-                console.log(err)
-                setError(true)
+                console.log(err);
+                setError(true);
             } finally {
-                setIsLoaded(true)
+                setIsLoaded(true);
             }
         }
-        fetchUser()
-    }, [id])
+        fetchUser();
+    }, [id]);
 
     return {
         performanceData,
         performanceLoaded,
         errorPerf,
-    }
+    };
 }

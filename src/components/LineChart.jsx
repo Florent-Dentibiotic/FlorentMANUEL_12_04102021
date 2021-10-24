@@ -1,6 +1,6 @@
-import LineChartD3 from '../D3/LineChartD3'
-import useFetchSessions from '../services/SessionsService'
-import { useParams } from 'react-router'
+import LineChartD3 from '../D3/LineChartD3';
+import useFetchSessions from '../services/SessionsService';
+import { useParams } from 'react-router';
 
 /**
  * Setting up LineChart framework and  initialising D3 if data loaded
@@ -9,8 +9,9 @@ import { useParams } from 'react-router'
  */
 
 function LineChart() {
-    const { id } = useParams()
-    const { sessionsData, sessionsLoaded, errorSessions } = useFetchSessions(id)
+    const { id } = useParams();
+    const { sessionsData, sessionsLoaded, errorSessions } =
+        useFetchSessions(id);
 
     return (
         <>
@@ -106,7 +107,7 @@ function LineChart() {
                 )}
             </svg>
         </>
-    )
+    );
 }
 
-export default LineChart
+export default LineChart;

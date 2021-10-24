@@ -1,4 +1,4 @@
-import KeyData from '../components/KeyData'
+import KeyData from '../components/KeyData';
 
 function DevKeyData() {
     return (
@@ -9,7 +9,7 @@ function DevKeyData() {
                 </div>
             </main>
         </>
-    )
+    );
 }
 
-export default DevKeyData
+export default DevKeyData;

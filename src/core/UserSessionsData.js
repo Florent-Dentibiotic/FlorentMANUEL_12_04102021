@@ -6,7 +6,7 @@ export default class UserSessionsData {
      * @param { array } sessions
      */
     constructor(id, sessions) {
-        this.userId = id
-        this.sessions = sessions
+        this.userId = id;
+        this.sessions = sessions;
     }
 }

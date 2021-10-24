@@ -1,17 +1,17 @@
-import '../index.css'
-import AsideNav from '../components/AsideNav'
-import BarChart from '../components/BarChart'
-import KeyData from '../components/KeyData'
-import LineChart from '../components/LineChart'
-import RadialBarChart from '../components/RadialBarChart'
-import RadarChart from '../components/RadarChart'
-import Error from '../components/Error'
-import useFetch from '../services/UserService'
-import { useParams } from 'react-router'
+import '../index.css';
+import AsideNav from '../components/AsideNav';
+import BarChart from '../components/BarChart';
+import KeyData from '../components/KeyData';
+import LineChart from '../components/LineChart';
+import RadialBarChart from '../components/RadialBarChart';
+import RadarChart from '../components/RadarChart';
+import Error from '../components/Error';
+import useFetch from '../services/UserService';
+import { useParams } from 'react-router';
 
 function Dashboard() {
-    const { id } = useParams()
-    const { userData, isLoaded, error } = useFetch(id)
+    const { id } = useParams();
+    const { userData, isLoaded, error } = useFetch(id);
 
     if (error) {
         return (
@@ -25,7 +25,7 @@ function Dashboard() {
                     />
                 </main>
             </>
-        )
+        );
     } else {
         return (
             <>
@@ -66,8 +66,8 @@ function Dashboard() {
                     </div>
                 </main>
             </>
-        )
+        );
     }
 }
 
-export default Dashboard
+export default Dashboard;
